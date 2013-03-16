@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Koa Lab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body { padding:60px 0; }
+    </style>
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+    <![endif]-->
+
+    <link rel="icon" type="image/png" href="img/koa_square.png">
+	
+	<style>
+	.logo {
+		height:87px;
+		margin-top: 9px;
+		border:0;
+	}
+	ul.nav {
+		height:136px;
+	}
+	.nav li {
+		height:100%;
+	}
+	.nav li a h1 {
+		padding-top:20px;
+	}
+	.nav li:hover {
+		/*border-bottom: 1px white solid;*/
+		background:#333;
+	}
+	.nav h1 {
+		font-family:"HelveticaNeue-Light";
+		font-weight:normal;
+		letter-spacing:2px;
+	}
+	
+	#content, .pitch, #like-sidebar {
+		-moz-box-sizing: border-box; 
+		-webkit-box-sizing: border-box; 
+		box-sizing: border-box;
+	}
+	
+	#content {
+		margin-top:136px;
+	}
+	.pitch {
+		font-size:16pt;
+		line-height:1.3em;
+		float:left;
+		width:70%;
+		padding:20px;
+	}
+	.pitch p {
+		margin-bottom:1em;
+	}
+	#like-sidebar {
+		padding:20px;
+		float:right;
+		width:30%;
+	}
+	</style>
+	
+  </head>
+  <body>
+	  
+	  <!-- Facebook JavaScript SDK -->
+	  <div id="fb-root"></div>
+	  <script>(function(d, s, id) {
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	    fjs.parentNode.insertBefore(js, fjs);
+	  }(document, 'script', 'facebook-jssdk'));</script>
+	  
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+	    <div class="container-fluid">
+			<a class="brand" href="index.html">
+			  <h1><img alt="Koa Lab" src="img/koa_white_horizontal.png" class="logo"></h1>
+        	</a>
+          <ul class="nav">
+            <li class="active">
+              <a href="http://blog.koalab.com">
+				<h1>Blog</h1>
+              </a>
+            </li>
+            <li class="active">
+              <a href="map.html">
+				<h1>Find Us</h1>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+		<div id="content">
+	  <div class="pitch">
+		<p>Koa is a shared workspace in the heart of Harvard Square for promising
+        start-ups.</p>
+        <p>Founded in 2012 by serial entrepreneur <a href= "http://www.linkedin.com/in/andypalmer">Andy Palmer</a>, the space provides a collaborative environment to power the next generation of innovation.</p>
+        <p>We're proud to help strengthen Cambridge's emerging start-up ecosystem.</p>
+      </div>
+      <div id="like-sidebar">
+		  <!-- big like box -->
+		  <!--
+		  <div class="fb-like-box" data-href="http://www.facebook.com/KoaLabStartUpClub?fref=ts" data-width="292" data-show-faces="true" data-stream="true" data-header="true"></div>
+-->
+		  <!-- small like box -->
+		  <iframe src="https://www.facebook.com/plugins/like.php?href=http://www.facebook.com/KoaLabStartUpClub"
+	            scrolling="no" frameborder="0"
+	            style="border:none; width:100%; height:80px" align="center"></iframe>
+				
+				<!-- Andy's twitter-->
+				<a class="twitter-timeline" href="https://twitter.com/andyhpalmer" data-widget-id="312681029817208832">Tweets by @andyhpalmer</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				
+
+	  </div>
+  </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+  </body>
+</html>
