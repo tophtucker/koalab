@@ -48,8 +48,24 @@
       	
       	/* blah */
       	
+      	body {
+      		margin-top: 
+      	}
+      	
+      	.masthead {
+      		max-width: 1000px;
+      		background: white;
+      		margin: 0 auto;
+      		border-bottom: 1px lightgray solid;
+      		padding: 5px 0;
+      	}
+      	
       	.masthead h3 img {
       		height: 50px;
+      	}
+      	
+      	#navbar {
+      		margin-top: 20px;
       	}
       	
 		/* directions */
@@ -68,23 +84,30 @@
 		}
 		
 		#directions, #map_canvas, #directions-panel {
-		box-sizing:border-box;
-		-moz-box-sizing:border-box; /* Firefox */
-		-webkit-box-sizing:border-box; /* Safari */
+			box-sizing:border-box;
+			-moz-box-sizing:border-box; /* Firefox */
+			-webkit-box-sizing:border-box; /* Safari */
 		}
 
 		#map_canvas {
-		width: 50%; 
-		height: 500px; 
-		top: 10px;
+			width: 50%; 
+			height: 500px; 
+			top: 10px;
 		}
 
 		#directions-panel {
-		height: 500px;
-		float: right;
-		width: 50%;
-		overflow: scroll;
-		padding-left: 20px;
+			height: 500px;
+			float: right;
+			width: 50%;
+			overflow: scroll;
+			padding-left: 20px;
+		}
+		
+		/* PORTFOLIO */
+		
+		.thumbnail img {
+			float:right;
+			margin: 10px;
 		}
       
     </style>
@@ -103,13 +126,13 @@
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
-  <body onload="initGeolocation();">
+  <body data-spy="scroll" data-target=".navbar" onload="initGeolocation();">
 
     <div class="container-narrow">
 
-      <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#top">Home</a></li>
+      <div class="masthead navbar-fixed-top">
+        <ul id="navbar" class="nav nav-pills pull-right">
+          <li><a href="#home">Home</a></li>
           <li><a href="#companies">Companies</a></li>
           <li><a href="#location">Find us</a></li>
           <li><a href="http://blog.koalab.com/">Blog</a></li>
@@ -117,16 +140,16 @@
         <h3 class="muted"><a href="#"><img src="img/koa_logo_horizontal.png"></a></h3>
       </div>
 
-      <hr>
+      <hr id="home">
 
       <div class="jumbotron">
         <h1>Helping promising startups deliver results</h1>
         <p class="lead">Koa is a shared workspace in the heart of Harvard Square for promising start-ups. Founded in 2012 by serial entrepreneur <a href= "http://www.linkedin.com/in/andypalmer">Andy Palmer</a>, the space provides a collaborative environment to power the next generation of innovation. We’re proud to help strengthen Cambridge’s emerging start-up ecosystem.</p>
       </div>
 
-      <hr>
+      <hr id="companies">
 
-      <div id="companies" class="row-fluid marketing">
+      <div class="row-fluid marketing">
 		<ul class="thumbnails">
 			<li class="span4">
 				<div class="thumbnail">
@@ -145,7 +168,7 @@
 			<li class="span4">
 				<div class="thumbnail">
 					<img src="http://m.c.lnkd.licdn.com/media/p/2/000/20f/3b4/3245f2c.png" alt="">
-					<h3>Realta Entertainment</h3>
+					<h3>Realta</h3>
 					<p>Realta Entertainment Group, Inc. was founded in 2009 by a group of dedicated professionals with extensive experience in business, interactive multimedia, music and video game creation. BandFuse is ...</p>
 				</div>
 			</li>
@@ -275,6 +298,13 @@
 			  // Could not obtain location
 		}
 	</script>
+	
+	<script>
+    $('#navbar').scrollspy();
+	$('[data-spy="scroll"]').each(function () {
+	  var $spy = $(this).scrollspy('refresh')
+	});
+    </script>
 
   </body>
 </html>
