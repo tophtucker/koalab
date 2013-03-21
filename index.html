@@ -90,19 +90,11 @@
 		}
 
 		#map_canvas {
-			width: 50%; 
+			width: 100%; 
 			height: 500px; 
 			top: 10px;
 		}
 
-		#directions-panel {
-			height: 500px;
-			float: right;
-			width: 50%;
-			overflow: scroll;
-			padding-left: 20px;
-		}
-		
 		/* PORTFOLIO */
 		
 		.thumbnail img {
@@ -225,7 +217,6 @@
 		<p class="lead">We’re located in the heart of Harvard Square, in the historic College House right across the street from the T and next to Otto’s Pizza.</p>
 
 		<div id="directions">
-			<div id="directions-panel"></div>
 			<div id="map_canvas"></div>
 		</div>
 		</div>
@@ -274,7 +265,6 @@
 		  }
 		  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 		  directionsDisplay.setMap(map);
-		  directionsDisplay.setPanel(document.getElementById('directions-panel'));
 		  calcRoute();
 		}
 	
