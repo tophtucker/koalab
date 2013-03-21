@@ -49,7 +49,7 @@
       	/* blah */
       	
       	body {
-      		margin-top: 
+      		padding: 0;
       	}
       	
       	.masthead {
@@ -66,6 +66,22 @@
       	
       	#navbar {
       		margin-top: 20px;
+      	}
+      	
+      	.nav-section {
+			top: -100px;
+			padding-top: 100px;
+			margin-top: 50px;
+			margin-bottom: -50px;
+      	}
+      	
+      	.nav-section-top {
+      		margin-top: 0;
+      	}
+      	
+      	hr {
+			position:relative;
+			top: 75px;
       	}
       	
 		/* directions */
@@ -132,16 +148,14 @@
         <h3 class="muted"><a href="#"><img src="img/koa_logo_horizontal.png"></a></h3>
       </div>
 
-      <hr id="home">
-
-      <div class="jumbotron">
+      <div id="home" class="jumbotron nav-section nav-section-top">
         <h1>Helping promising startups deliver results</h1>
         <p class="lead">Koa is a shared workspace in the heart of Harvard Square for promising start-ups. Founded in 2012 by serial entrepreneur <a href= "http://www.linkedin.com/in/andypalmer">Andy Palmer</a>, the space provides a collaborative environment to power the next generation of innovation. We’re proud to help strengthen Cambridge’s emerging start-up ecosystem.</p>
       </div>
 
-      <hr id="companies">
+      <hr>
 
-      <div class="row-fluid marketing">
+      <div id="companies" class="row-fluid marketing nav-section">
 		<ul class="thumbnails">
 			<li class="span4">
 				<div class="thumbnail">
@@ -203,7 +217,7 @@
 
 		<hr>
 		
-		<div id="location">
+		<div class="nav-section" id="location">
 
 		<div class="adr">
 		 <div class="street-address">1430 Massachusetts Avenue</div>
