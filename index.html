@@ -4,132 +4,11 @@
     <meta charset="utf-8">
     <title>Koa Lab</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Koa is a shared workspace in the heart of Harvard Square for promising start-ups. Founded in 2012 by serial entrepreneur Andy Palmer, the space provides a collaborative environment to power the next generation of innovation.">
 
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      /* Custom container */
-      .container-narrow {
-        margin: 0 auto;
-        max-width: 1000px;
-      }
-      .container-narrow > hr {
-        margin: 30px 0;
-      }
-
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        margin: 60px 0;
-        text-align: center;
-      }
-      .jumbotron h1 {
-        font-size: 72px;
-        line-height: 1;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
-
-      /* Supporting marketing content */
-      .marketing {
-        margin: 60px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
-      	
-      	/* blah */
-      	
-      	.masthead {
-      		max-width: 1000px;
-      		background: white;
-      		margin: 0 auto;
-      		border-bottom: 1px lightgray solid;
-      		padding: 5px 0;
-      	}
-      	
-      	.masthead h3 img {
-      		height: 50px;
-      	}
-      	
-      	#navbar {
-      		margin-top: 20px;
-      	}
-      	
-      	.nav-section {
-			top: -100px;
-			padding-top: 100px;
-			margin-top: 50px;
-			margin-bottom: -50px;
-      	}
-      	
-      	.nav-section.jumbotron {
-      		margin-top: 0;
-      	}
-      	
-      	.nav-section.footer {
-      		padding-top: 30px;
-      		margin-bottom: 50px;
-      	}
-      	
-      	hr {
-			position:relative;
-			top: 75px;
-      	}
-      	
-      	/* PORTFOLIO */
-		
-		.thumbnails li {
-			height: 100px;
-		}
-		
-		.thumbnails a {
-			display: block;
-			width: 100%;
-		}
-		
-		.thumbnails img {
-			display: block;
-			margin: 0 auto;
-			max-width: 200px;
-		}
-		
-		.thumbnails h3 {
-			margin: 0;
-			text-align: center;
-		}
-		      	
-		/* FIND US */
-		
-		#location p.lead {
-			float: left;
-			width: 700px;
-		}
-		#location .adr {
-			float: right;
-			width: 300px;
-			text-align: right;
-		} 
-		#location .adr .country-name {
-			display: none;
-		}
-		
-		#directions, #map_canvas, #directions-panel {
-			box-sizing:border-box;
-			-moz-box-sizing:border-box; /* Firefox */
-			-webkit-box-sizing:border-box; /* Safari */
-		}
-
-		#map_canvas {
-			width: 100%; 
-			height: 500px; 
-			top: 10px;
-		}
-		
-    </style>
+    <link href="css/koa.css" rel="stylesheet"> <!-- custom koa styles -->
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -148,7 +27,11 @@
   <body data-spy="scroll" data-target=".navbar" onload="initGeolocation();">
 
     <div class="container-narrow">
-
+      
+      
+      <!-- NAVIGATION BAR -->
+      
+      
       <div class="masthead navbar-fixed-top">
         <ul id="navbar" class="nav nav-pills pull-right">
           <li><a href="#home">Home</a></li>
@@ -158,13 +41,19 @@
         </ul>
         <h3 class="muted"><a href="#"><img src="img/koa_logo_horizontal.png"></a></h3>
       </div>
-
+      
+      
+      <!-- INTRO -->
+      
+      
       <div id="home" class="jumbotron nav-section nav-section-top">
         <h1>Helping promising startups deliver results</h1>
         <p class="lead">Koa is a shared workspace in the heart of Harvard Square for promising start-ups. Founded in 2012 by serial entrepreneur <a href= "http://www.linkedin.com/in/andypalmer">Andy Palmer</a>, the space provides a collaborative environment to power the next generation of innovation. We’re proud to help strengthen Cambridge’s emerging start-up ecosystem.</p>
       </div>
 
       <hr>
+      
+      <!-- COMPANIES -->
 
       <div id="companies" class="row-fluid marketing nav-section">
 		<ul class="thumbnails">
@@ -191,40 +80,40 @@
 		</ul>
 		<ul class="thumbnails">
 			<li class="span4">
-					<a href="http://upstart.com/"><img class="logo" src="img/companies/upstart.png" alt="Upstart" title="Upstart was founded by a team of ex-Googlers with a simple idea — to help you do what you’re meant to do."></a>
+				<a href="http://upstart.com/"><img class="logo" src="img/companies/upstart.png" alt="Upstart" title="Upstart was founded by a team of ex-Googlers with a simple idea — to help you do what you’re meant to do."></a>
 			</li>
 			<li class="span4">
-					<a href="http://cloudant.com/"><img class="logo" src="img/companies/cloudant.png" alt="Cloudant" title="Cloudant is the distributed database as a service."></a>
+				<a href="http://cloudant.com/"><img class="logo" src="img/companies/cloudant.png" alt="Cloudant" title="Cloudant is the distributed database as a service."></a>
 			</li>
 			<li class="span4">
-					<a href="http://firecracker.me/"><img class="logo" src="img/companies/firecracker.png" alt="Firecracker" title="Firecracker gives you complete control over what, when and how you learn."></a>
+				<a href="http://firecracker.me/"><img class="logo" src="img/companies/firecracker.png" alt="Firecracker" title="Firecracker gives you complete control over what, when and how you learn."></a>
 			</li>
 		</ul>
 		<ul class="thumbnails">
 			<li class="span4">
-					<a href="http://openbay.com/"><img class="logo" src="img/companies/openbay.png" alt="Openbay" title="Openbay is transforming the way people get their autos repaired."></a>
+				<a href="http://openbay.com/"><img class="logo" src="img/companies/openbay.png" alt="Openbay" title="Openbay is transforming the way people get their autos repaired."></a>
 			</li>
 			<li class="span4">
-					<a href="http://apptegic.com/"><img class="logo" src="img/companies/apptegic.png" alt="Apptegic" title="Apptegic inspires engagement with data-driven on site messaging and outreach."></a>
+				<a href="http://apptegic.com/"><img class="logo" src="img/companies/apptegic.png" alt="Apptegic" title="Apptegic inspires engagement with data-driven on site messaging and outreach."></a>
 			</li>
 			<li class="span4">
 				<h3>Careport</h3>
 			</li>
 		</ul>
-		<!--
+		<!-- ul is row, li is item. max three items per row.
 		<ul class="thumbnails">
 			<li class="span4">
-				<div class="thumbnail">
-					<img src="" alt="">
-					<h3>Name</h3>
-					<p>Desc</p>
-				</div>
+				<a href=" {{ COMPANY URL }} "><img class="logo" src=" {{ IMAGE URL }} " alt=" {{ COMPANY NAME }} " title=" {{ TOOLTIP }} "></a>
 			</li>
 		</ul>
 		-->
       </div>
 
 		<hr>
+		
+		
+		<!-- MAP -->
+		
 		
 		<div class="nav-section" id="location">
 
@@ -251,7 +140,9 @@
       </div>
 
     </div> <!-- /container -->
-
+	
+	
+	
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -293,7 +184,7 @@
 	
 		function calcRoute() {
 		  var start = coords;
-		  var end = "1430 Massachusetts Ave, Cambridge, MA"; //new google.maps.LatLng(35.22869, -80.84127);
+		  var end = "1430 Massachusetts Ave, Cambridge, MA"; //DESTINATION ADDRESS GOES HERE
 		  var request = {
 			origin:start,
 			destination:end,
@@ -313,11 +204,13 @@
 	</script>
 	
 	<script>
-    $('#navbar').scrollspy();
-	$('[data-spy="scroll"]').each(function () {
-	  var $spy = $(this).scrollspy('refresh')
-	});
-	$('.logo').tooltip();
+		// makes navbar show current position
+		$('#navbar').scrollspy();
+		$('[data-spy="scroll"]').each(function () {
+		  var $spy = $(this).scrollspy('refresh')
+		});
+		// makes pop-up tooltips when you hover over logos
+		$('.logo').tooltip();
     </script>
 
   </body>
