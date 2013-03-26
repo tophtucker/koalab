@@ -1,118 +1,122 @@
-      /* Custom container */
-      .container-narrow {
-        margin: 0 auto;
-        max-width: 1000px;
-      }
-      .container-narrow > hr {
-        margin: 30px 0;
-      }
+/* Custom container */
+.container-narrow {
+	margin: 0 auto;
+	max-width: 1000px;
+}
+.container-narrow > hr {
+	margin: 30px 0;
+}
 
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        margin: 60px 0;
-        text-align: center;
-      }
-      .jumbotron h1 {
-        font-size: 72px;
-        line-height: 1;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
+/* Main marketing message and sign up button */
+.jumbotron {
+	margin: 60px 0;
+	text-align: center;
+}
+.jumbotron h1 {
+	font-size: 72px;
+	line-height: 1;
+}
+.jumbotron .btn {
+	font-size: 21px;
+	padding: 14px 24px;
+}
 
-      /* Supporting marketing content */
-      .marketing {
-        margin: 60px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
-      	
-      	/* INTRO AND TEMPLATE */
-      	
-      	.masthead {
-      		max-width: 1000px;
-      		background: white;
-      		margin: 0 auto;
-      		border-bottom: 1px lightgray solid;
-      		padding: 5px 0;
-      	}
-      	
-      	.masthead h3 img {
-      		height: 50px;
-      	}
-      	
-      	#navbar {
-      		margin-top: 20px;
-      	}
-      	
-      	.nav-section {
-			top: -100px;
-			padding-top: 100px;
-			margin-top: 50px;
-			margin-bottom: -50px;
-      	}
-      	
-      	.nav-section.jumbotron {
-      		margin-top: 0;
-      	}
-      	
-      	.nav-section.footer {
-      		padding-top: 30px;
-      		margin-bottom: 50px;
-      	}
-      	
-      	hr {
-			position:relative;
-			top: 75px;
-      	}
-      	
-      	/* PORTFOLIO */
-		
-		.thumbnails li {
-			height: 100px;
-		}
-		
-		.thumbnails a {
-			display: block;
-			width: 100%;
-		}
-		
-		.thumbnails img {
-			display: block;
-			margin: 0 auto;
-			max-width: 200px;
-		}
-		
-		.thumbnails h3 {
-			margin: 0;
-			text-align: center;
-		}
-		      	
-		/* FIND US */
-		
-		#location p.lead {
-			float: left;
-			width: 700px;
-		}
-		#location .adr {
-			float: right;
-			width: 300px;
-			text-align: right;
-		} 
-		#location .adr .country-name {
-			display: none;
-		}
-		
-		#directions, #map_canvas, #directions-panel {
-			box-sizing:border-box;
-			-moz-box-sizing:border-box; /* Firefox */
-			-webkit-box-sizing:border-box; /* Safari */
-		}
+/* Supporting marketing content */
+.marketing {
+	margin: 60px 0;
+}
+.marketing p + h4 {
+	margin-top: 28px;
+}
 
-		#map_canvas {
-			width: 100%; 
-			height: 500px; 
-			top: 10px;
-		}
+/* INTRO AND TEMPLATE */
+
+.masthead {
+	max-width: 1000px;
+	background: white;
+	margin: 0 auto;
+	border-bottom: 1px lightgray solid;
+	padding: 5px 0;
+}
+
+.masthead h3 img {
+	height: 50px;
+}
+
+#navbar {
+	margin-top: 20px;
+}
+
+.nav-section {
+	top: -100px;
+	padding-top: 100px;
+	margin-top: 50px;
+	margin-bottom: -50px;
+}
+
+.nav-section.jumbotron {
+	margin-top: 0;
+}
+
+.nav-section.footer {
+	padding-top: 30px;
+	margin-bottom: 50px;
+}
+
+hr {
+	position:relative;
+	top: 75px;
+}
+
+/* PORTFOLIO */
+
+.thumbnails li {
+	height: 100px;
+}
+
+.thumbnails a {
+	display: block;
+	width: 100%;
+}
+
+.thumbnails img {
+	display: block;
+	margin: 0 auto;
+	max-width: 200px;
+}
+
+.thumbnails h3 {
+	margin: 0;
+	text-align: center;
+}
+
+/* FIND US */
+
+#location p.lead {
+	float: left;
+	width: 100%;
+	text-align:center;
+}
+#location .addresses {
+	width: 100%;
+}
+#location .adr {
+	float: left;
+	width: 50%;
+	text-align: center;
+} 
+#location .adr .country-name {
+	display: none;
+}
+
+#directions, #map_canvas, #directions-panel {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+}
+
+#map_canvas {
+	width: 100%; 
+	height: 500px; 
+	top: 10px;
+}
