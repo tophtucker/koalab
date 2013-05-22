@@ -168,7 +168,8 @@ hr {
 	text-align:center;
 }
 #location .addresses {
-	width: 100%;
+	width: 70%;
+	margin: 0 auto;
 }
 #location .adr {
 	float: left;
@@ -186,7 +187,8 @@ hr {
 }
 
 #map_canvas {
-	width: 100%; 
+	width: 70%; 
 	height: 500px; 
 	top: 10px;
+	margin: 0 auto;
 }
