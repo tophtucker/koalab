@@ -21,6 +21,7 @@
 	padding: 14px 24px;
 }
 
+
 /* Supporting marketing content */
 .marketing {
 	margin: 60px 0;
@@ -66,6 +67,11 @@
 hr {
 	position:relative;
 	top: 75px;
+}
+
+.membership-nav-pill {
+	background: red;
+	color: white;
 }
 
 /* PORTFOLIO */
