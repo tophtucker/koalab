@@ -90,6 +90,76 @@ hr {
 	text-align: center;
 }
 
+/* MEMBERSHIP */
+
+.membership {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+		    box-sizing: border-box;
+}
+
+.membership.container {
+	width: 65%;
+	margin: 0 auto;
+	overflow: none;
+}
+
+.membership.left-element {
+	moz-border-radius: 15px 0px 0px 0px;
+	border-radius: 15px 0px 0px 0px;
+	border: 3px solid black;
+	width: 50%;
+	margin: 0 auto;
+	float:left;
+}
+
+.membership.right-element {
+	moz-border-radius: 0px 15px 0px 0px;
+	border-radius: 0px 15px 0px 0px;
+	border: 3px solid black;
+	width: 50%;
+	margin: 0 auto;
+	float:left;
+}
+
+.membership.listheaderleft {
+	moz-border-radius: 15px 0px 0px 0px;
+	border-radius: 15px 0px 0px 0px;
+	border-bottom: 2px solid black;
+	background: #00612c;
+	margin-top:0;
+	color: white;
+	padding: .3em;
+}
+
+.membership.listheaderright {
+	moz-border-radius: 0px 15px 0px 0px;
+	border-radius: 0px 15px 0px 0px;
+	border-bottom: 2px solid black;
+	background: #1e1c59;
+	margin-top:0;
+	color: white;
+	padding: .3em;
+}
+
+.membershiplistleft {
+	font-size: 18pt;
+	padding: .5em;
+}
+
+.membershiplistright {
+	font-size: 18pt;
+	padding: .5em;
+}
+
+.membershiplistitem {
+	padding: .3em 0em .3em 0em;
+}
+
+.membership.contact {
+	
+}
+
 /* FIND US */
 
 #location p.lead {
