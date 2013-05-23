@@ -14,3 +14,12 @@
 	text-align: center;
 	color: #1e1c59;
 }
+
+.pongbutton {
+	height:20px; 
+	width:100px; 
+	margin: -20px -50px; 
+	position:relative;
+	top:50%; 
+	left:50%;
+}
