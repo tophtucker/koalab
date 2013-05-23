@@ -108,6 +108,7 @@ hr {
 	width: 65%;
 	margin: 0 auto;
 	overflow: none;
+	cursor:pointer;
 }
 
 .membership.left-element {

@@ -11,7 +11,7 @@
 	
     <!-- Styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/koa.css" rel="stylesheet"> <!-- custom koa styles -->
+    <link href="css/index.css" rel="stylesheet"> <!-- custom koa styles -->
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -122,7 +122,7 @@
 			<br>
 			<br>
 			<div class="container membership" >
-				<div class="left-element membership">
+				<div class="left-element membership" onClick="membershipOptionClicked(0)">
 					<h2 align="center" class="listheaderleft membership">Dedicated Desk</h2>
 					<ul class = "membershiplistleft">
 						<li class = "membershiplistitem">1-2 people per desk</li>
@@ -132,7 +132,7 @@
 						<li class = "membershiplistitem">Cost: $600 per month</li>
 					</ul>
 				</div>
-				<div class="right-element membership">
+				<div class="right-element membership" onClick="membershipOptionClicked(1)">
 					<h2 align="center" class="listheaderright membership">Dedicated Office</h2>
 					<ul class = "membershiplistright">
 						<li class = "membershiplistitem">Furnished and Private</li>
@@ -270,17 +270,29 @@
 		});
 		// makes pop-up tooltips when you hover over logos
 		$('.logo').tooltip();
-    </script>
-	
-	<script>
-	//makes companies logos centered vertically
-	$(document).ready(function() {
-	    $(".logolink").each(function(){
-	      var mytop = ($(".span4").height() - $(this).height()) / 2;
-	      $(this).css({top: mytop + 'px'});
-		  $(this).css({'margin-top': mytop + 'px'});
-	    });
-	  });
+		
+		//makes companies logos centered vertically
+		$(document).ready(function() {
+	    	$(".logolink").each(function(){
+	      	  var mytop = ($(".span4").height() - $(this).height()) / 2;
+	      	$(this).css({top: mytop + 'px'});
+		  	$(this).css({'margin-top': mytop + 'px'});
+	    	});
+	  	});
+		
+		//makes membership options clickable
+		function membershipOptionClicked(optionNum) {
+			var optionString;
+			switch(optionNum) {
+			case 0:
+				optionString = "dedicated-desk";
+				break;
+			case 1:
+				optionString = "dedicated-office";
+				break;
+			}
+			var w = window.open("./application.html?option=" + optionString);
+		}
 	</script>
 
   </body>

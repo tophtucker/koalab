@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Koa Labs</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Koa is a shared workspace in the heart of Harvard Square for promising start-ups. Founded in 2012 by serial entrepreneur Andy Palmer, the space provides a collaborative environment to power the next generation of innovation.">
+	
+	<!-- favicon -->
+	<link rel="shortcut icon" href="img/favicon.ico">
+	
+	<!-- Styles -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/application.css" rel="stylesheet"> <!-- custom koa style -->
+	<link href="css/index.css" rel="stylesheet">  <!-- custom koa style -->
+	<link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+		<script src="../assets/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<!-- Fav and touch icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+		<link rel="shortcut icon" href="../assets/ico/favicon.png">
+	</head>
+	<body data-spy="scroll" data-target=".navbar" onload="startup();">
+
+		<div class="container-narrow">
+      
+      
+			<!-- NAVIGATION BAR -->
+      
+			<div class="masthead navbar-fixed-top">
+				<ul id="navbar" class="nav nav-pills pull-right">
+					<li><a href="./index.html">Back</a></li>
+				</ul>
+				<h3 class="muted"><a href="#"><img src="img/koa_labs_logo_horizontal.png"></a></h3>
+			</div>
+	  
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+	  
+			<!-- APPLICATION FORM -->
+	  
+			<div id="stylized" class="myform">
+				<form id="form" name="form" method="post" action="mailto:sam@koalab.com">
+					<h1 align="center">Apply for membership</h1>
+
+					<label>Name
+						<span class="small">Add your name</span>
+					</label>
+					<input type="text" name="name" id="name" />
+
+					<label>Email
+						<span class="small">Add a valid address</span>
+					</label>
+					<input type="email" name="email" id="email" />
+
+					<label>Phone Number
+						<span class="small">Add a convenient number</span>
+					</label>
+					<input type="tel" name="phone" id="phone" />
+	  
+					<label>Membership Option
+						<span class="small">Select your desired plan</span>
+					</label>
+					<select name="option" id="membership-option">
+						<option value="dedicated-desk">Dedicated Desk</option>
+						<option value="dedicated-office">Dedicated Office</option>
+					</select>
+	  
+					<label>Start Date
+						<span class="small">When do you need the space?</span>
+					</label>
+					<input type="date" name="start-date" id="start-date" />
+	  
+					<label>Number of People
+						<span class="small">How many people need space?</span>
+					</label>
+					<input type="number" name="num-people" id="num-people" min="1" value="1" />
+	  
+					<div class="center">
+						<button type="submit">Apply</button>
+					</div>
+					<div class="spacer"></div>
+
+				</form>
+			</div>
+	  
+		</div>
+  
+		<script>
+  
+		function startup() {
+			// initialize the start date value to today's date
+			document.getElementById('start-date').value = new Date().toJSON().slice(0,10);
+			// initialize the membership option by what was passed
+			var qString = unescape(top.location.search.substring(1));
+			var nameVal = qString.split(/\=/);
+			document.getElementById('membership-option').value = nameVal[1];
+		}
+		</script>
+  
+	</body>
+	</html>
