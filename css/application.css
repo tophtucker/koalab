@@ -73,7 +73,7 @@ p, h1, form, button{border:0; margin:0; padding:0;}
 	clear:both;
 	width:80px;
 	height:31px;
-	background:#666666 url(img/button.png) no-repeat;
+	background:#666666 no-repeat;
 	text-align:center;
 	line-height:31px;
 	color:#FFFFFF;
