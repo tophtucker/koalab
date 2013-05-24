@@ -42,20 +42,33 @@
 						<span class="small">Select a Player</span>
 					</label>
 					<select name="player1" id="player1"><?php
-						die();
 						$file_handle = fopen("./leaderboard.dat", "r");
 						while (!feof($file_handle)) {
 						   $line = fgets($file_handle);
-						   echo "<option value=".$line.">".$line"</option>";
+						   echo "<option value=".$line.">".$line."</option>";
 						}
 						fclose($file_handle);
 						?>
 					</select>
-
-					<label>Email
-						<span class="small">Add a valid address</span>
+					<br>
+					<br>
+					<br>
+					<label>Player 2
+						<span class="small">Select another Player</span>
 					</label>
-					<input type="email" name="email" id="email" />
+					<select name="player1" id="player1"><?php
+						$file_handle = fopen("./leaderboard.dat", "r");
+						while (!feof($file_handle)) {
+						   $line = fgets($file_handle);
+						   echo "<option value=".$line.">".$line."</option>";
+						}
+						fclose($file_handle);
+						?>
+					</select>
+					
+					<br>
+					<br>
+					<br>
 
 					<label>Phone Number
 						<span class="small">Add a convenient number</span>

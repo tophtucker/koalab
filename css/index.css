@@ -118,6 +118,7 @@ hr {
 	width: 50%;
 	margin: 0 auto;
 	float:left;
+	text-align: center;
 }
 
 .membership.right-element {
@@ -127,6 +128,7 @@ hr {
 	width: 50%;
 	margin: 0 auto;
 	float:left;
+	text-align: center;
 }
 
 .membership.listheaderleft {
@@ -152,15 +154,29 @@ hr {
 .membershiplistleft {
 	font-size: 18pt;
 	padding: .5em;
+	padding-top: .2em;
+	text-align:left;
 }
 
 .membershiplistright {
 	font-size: 18pt;
 	padding: .5em;
+	padding-top: .2em;
+	text-align:left;
 }
 
 .membershiplistitem {
 	padding: .3em 0em .3em 0em;
+}
+
+.membershiplabel {
+	font-size: 22pt;
+	font-weight: bold;
+	text-decoration: underline;
+	padding-top: -1em;
+	margin-top: -.3em;
+	padding-bottom: .7em;
+	color: #1e1c59;
 }
 
 .membership.contact {
