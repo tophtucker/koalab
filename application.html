@@ -102,10 +102,8 @@
 		
 		// makes number of desks option appear when dedicated-desk option is selected
 		function showNumDesksOption() {
-			console.log("start\n");
 			var a = "<label>Number of Desks<span class='small'>How many desks do you need?</span></label><input type = 'number' name = 'num-desks' id = 'num-desks' min='1' value='1'/>";
 			if (document.getElementById("membership-option").value=="dedicated-desk") {
-				console.log("tripped\n");
 				document.getElementById("numDesks").innerHTML = a;
 			}
 			else {
