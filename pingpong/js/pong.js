@@ -1,5 +1,4 @@
 function populatePlayerSelect(playerChanged) {
-	console.log("populatePlayerSelect called, playerChanged = " + playerChanged);
 	var p1value, p2value;
 	if (playerChanged > 0) {
 		var p1value = document.getElementById('player1').value;
@@ -26,7 +25,6 @@ function populatePlayerSelect(playerChanged) {
 }
 
 function populateWinnerSelect() {
-	console.log('populateWinnerSelect called');
 	// on any call other than first, save the selection
 	var selectedIndex = 0;
 	if (document.getElementById('winner').length > 0) {
@@ -40,7 +38,6 @@ function populateWinnerSelect() {
 }
 
 function disableDoubles() {
-	console.log("disableDoubles called");
 	var p1value = document.getElementById('player1').value;
 	var p2value = document.getElementById('player2').value;
 	$("#player1 option[value="+p2value+"]").remove();
@@ -48,7 +45,6 @@ function disableDoubles() {
 }
 
 function getLeaderboard() {
-	console.log("getLeaderboard called");
 	$.get( 
 		"php/pong.php",
 		{ function: "getLeaderboard" },
@@ -58,7 +54,36 @@ function getLeaderboard() {
 	);
 }
 
+function logGame(form) {
+	$.get( 
+		"php/pong.php",
+		{ function: "logGame", player1: form.player1.value, player2: form.player2.value, winner: form.winner.value },
+		function(data) {
+			location.reload();
+		}
+	);
+}
+
+function addPlayer() {
+	var player = document.getElementById('newPlayer').value;
+	if (player.length == 0) {
+		document.getElementById('warningLabel').innerHTML = "Needs to have length more than NOTHING";
+		return;
+	}
+	if ( /[^A-Za-z\d]/.test(player) ) {
+		document.getElementById('warningLabel').innerHTML = "Invalid Characters Detected";
+		return;
+	}
+	$.get( 
+		"php/pong.php",
+		{ function: "addPlayer", player1: player },
+		function(data) {
+			location.reload();
+		}
+	);
+}
+
 function startup() {
-	console.log("Startup called");
 	populatePlayerSelect(0);
+	getLeaderboard();
 }
