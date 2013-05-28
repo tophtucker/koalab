@@ -29,6 +29,9 @@
 	</head>
 	<body>
 		<?php
+		
+		include "ChromePhp.php";
+		
 		if(isset($_POST['email'])) {
      
 			// EDIT THE 2 LINES BELOW AS REQUIRED
@@ -94,23 +97,38 @@
 			$email_message .= "Date Submitted: ".clean_string($date)."\n";
 			$email_message .= "\n";
      
+			//until we are sure the email message works, we will append applications.txt
+			$datadir = "./data";
+			$file = $datadir."/applications.txt";
+			$didwrite = true;
+			if ( !file_exists($datadir) ) {
+				if ( is_writeable(".")) {
+					mkdir ($datadir, 0776);
+					$fh = fopen($file, 'a') or die("can't open file");
+					fwrite($fh, "THIS FILE HOLDS BACKUP DATA FOR APPLICATION SUBMISSIONS FROM WWW.KOALAB.COM/APPLICATION.HTML");
+					fclose($fh);
+				}
+				else {
+					$email_message.="\nWARNING: Due to a problem with file permissions, this application could not be logged.\n";
+					$didwrite = false;
+				}
+			}
+			//catch if unable to get to file, meaning we didn't create it.  probably a file permissions thing.
+			if(!file_exists("/tmp/test.txt")) {
+				if(!$didwrite)
+					$email_message .= "\nWARNING: Application could not be logged, reason unknown.\n";
+			}
+			else {
+				$fh = fopen($file, 'a') or die("can't open file");
+				fwrite($fh, $email_message);
+				fclose($fh);
+			}
+			
 			// create email headers
 			$headers = 'From: '.$email_from."\r\n".
 				'Reply-To: '.$email."\r\n" .
 					'X-Mailer: PHP/' . phpversion();
 			@mail($email_to, $email_subject, $email_message, $headers);  
-			//until we are sure the email message works, we will append applications.txt
-			$datadir = "./data";
-			$file = "./data/applications.txt";
-			if ( !file_exists($datadir) ) {
-				mkdir ($datadir, 0776);
-				$fh = fopen($file, 'a') or die("can't open file");
-				fwrite($fh, "THIS FILE HOLDS BACKUP DATA FOR APPLICATION SUBMISSIONS FROM WWW.KOALAB.COM/APPLICATION.HTML");
-				fclose($fh);
-			}
-			$fh = fopen($file, 'a') or die("can't open file");
-			fwrite($fh, $email_message);
-			fclose($fh);
 		}
 		?>
  
