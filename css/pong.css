@@ -1,0 +1,153 @@
+.totality {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+		    box-sizing: border-box;
+	width: 80%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.totality h1 {
+	text-align: center;
+	font: helvetica;
+	color: #1e1c59;
+}
+
+.totality p {
+	font-size:12pt;
+	text-align: center;
+	color: #1e1c59;
+}
+
+.leaderboard {
+	width: 60%;
+	margin: 0 auto;
+	float: left;
+	background: lightgrey;
+	text-align: center;
+	clear:both;
+	height: 100%;
+	padding-bottom: 10000px;
+	margin-bottom: -10000px;
+}
+
+.lbplayer {
+	clear: left;
+	float: left;
+	width: 30%;
+}
+
+.lbwins {
+	float: left;
+	width: 20%;
+}
+
+.lblosses {
+	float: left;
+	width: 20%;
+}
+
+.lblastplayed {
+	float: left;
+	width: 30%;
+}
+
+.rules {
+	clear: both;
+}
+
+body{
+	font-family:"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+p, h1, form, button{border:0; margin:0; padding:0;}
+.spacer{clear:both; height:1px; margin-bottom: 50px;}
+
+/* ----------- My Form ----------- */
+.myform{
+	margin:0 auto;
+	width:450px;
+	padding:14px;
+}
+
+
+/* ----------- stylized ----------- */
+#stylized{
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+		    box-sizing: border-box;
+	background:lightblue;
+	border-left: 2px solid blue;
+	float: left;
+	width: 40%;
+	clear: right;
+	margin: 0 auto;
+	height: 100%;
+	padding-bottom: 10000px;
+	margin-bottom: -10000px;
+}
+#stylized h1 {
+	font-size:24px;
+	font-weight:bold;
+	margin-bottom:8px;
+}
+#stylized p{
+	font-size:11px;
+	color:#666666;
+	margin-bottom:20px;
+	border-bottom:solid 1px #b7ddf2;
+	padding-bottom:10px;
+}
+#stylized label{
+	display:block;
+	font-weight:bold;
+	text-align:right;
+	width:50%;
+	float:left;
+}
+#stylized .small{
+	color:#666666;
+	display:block;
+	font-size:11px;
+	font-weight:normal;
+	text-align:right;
+	width:100%;
+}
+#stylized input{
+	float:left;
+	font-size:12px;
+	padding:4px 2px;
+	border:solid 1px #aacfe4;
+	width:35%;
+	margin:2px 0 20px 10px;
+}
+
+#stylized select{
+	clear:right;
+	float:left;
+	font-size:12px;
+	padding:4px 2px;
+	border:solid 1px #aacfe4;
+	width:auto;
+	margin:2px 0 20px 10px;
+}
+
+#stylized .center {
+	text-align: center;
+	clear:both;
+	margin: 0 auto;
+}
+
+#stylized button{
+	moz-border-radius:3px;
+	border-radius:3px;
+	clear:both;
+	width:80px;
+	height:31px;
+	background:#666666 no-repeat;
+	text-align:center;
+	line-height:31px;
+	color:#FFFFFF;
+	font-size:11px;
+	font-weight:bold;
+}
