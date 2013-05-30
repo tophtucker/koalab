@@ -68,19 +68,17 @@ function addPlayer() {
 	var player = document.getElementById('newPlayer').value;
 	if (player.length == 0) {
 		document.getElementById('warningLabel').innerHTML = "Needs to have length more than NOTHING";
-		return;
 	}
 	if ( /[^A-Za-z\d]/.test(player) ) {
 		document.getElementById('warningLabel').innerHTML = "Invalid Characters Detected";
-		return;
 	}
-	$.get( 
-		"php/pong.php",
-		{ function: "addPlayer", player1: player },
-		function(data) {
-			location.reload();
-		}
-	);
+	// $.get( 
+// 		"php/pong.php",
+// 		{ function: "addPlayer", player1: player },
+// 		function(data) {
+// 			location.reload();
+// 		}
+// 	);
 }
 
 function startup() {
