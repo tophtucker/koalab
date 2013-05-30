@@ -26,7 +26,7 @@
                     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
 								   
-								   <!--#include virtual="/counter/count.cgi?page=mainsitecounter"-->
+								  
   </head>
 
   <body data-spy="scroll" data-target=".navbar" onload="initializeMap();">
@@ -39,7 +39,7 @@
       
       <div class="masthead navbar-fixed-top">
         <ul id="navbar" class="nav nav-pills pull-right">
-          <li><a href="#home">Home</a></li>
+          <li id="firstnav"><a href="#home">Home</a></li>
           <li><a href="#companies">Companies</a></li>
 		  <li><a class = "membership-nav-pill"href="#membership">Membership <b>&#155;</b>	</a></li>
           <li><a href="#location">Find us</a></li>
@@ -197,7 +197,7 @@
       <hr>
 
       <div class="footer nav-section">
-        <p>&copy; Koa Labs 2013</p>
+        <p>&copy; Koa Labs 2013</p>  <!--#include virtual="/counter/count.cgi?page=mainsitecounter"-->
       </div>
 
     </div> <!-- /container -->
@@ -265,9 +265,10 @@
 	
 	<script>
 		// makes navbar show current position
+		jQuery.fn.reverse = [].reverse;
 		$('#navbar').scrollspy();
 		$('[data-spy="scroll"]').each(function () {
-		  var $spy = $(this).scrollspy('refresh')
+		  var $spy = $(this).scrollspy('refresh');
 		});
 		// makes pop-up tooltips when you hover over logos
 		$('.logo').tooltip();

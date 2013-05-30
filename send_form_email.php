@@ -28,14 +28,14 @@
 		<link rel="shortcut icon" href="../assets/ico/favicon.png">
 	</head>
 	<body>
+		
 		<?php
 		
-		include "ChromePhp.php";
 		
 		if(isset($_POST['email'])) {
      
 			// EDIT THE 2 LINES BELOW AS REQUIRED
-			$email_to = "sam@koalab.com";
+			$email_to = "samgqroberts@gmail.com";
 			$email_subject = "Application for Membership from www.koalab.com";
 			$email_from = "sam@koalab.com";
      
@@ -63,6 +63,7 @@
 			$email = $_POST['email']; // required
 			$phone = $_POST['phone']; // required
 			$option = $_POST['option']; // required
+			$numDesks = $_POST['num-desks']; // not required
 			$startDate = $_POST['start-date']; // required
 			$numPeople = $_POST['num-people']; // required
 			date_default_timezone_set('America/New_York');
@@ -92,6 +93,8 @@
 			$email_message .= "Email: ".clean_string($email)."\n";
 			$email_message .= "Telephone: ".clean_string($phone)."\n";
 			$email_message .= "Membership Option: ".clean_string($option)."\n";
+			if ($numDesks)
+				$email_message .= "Number of Desks: ".$numDesks."\n";
 			$email_message .= "Requested Starting Date: ".clean_string($startDate)."\n";
 			$email_message .= "Number of People: ".clean_string($numPeople)."\n";
 			$email_message .= "Date Submitted: ".clean_string($date)."\n";
@@ -114,7 +117,7 @@
 				}
 			}
 			//catch if unable to get to file, meaning we didn't create it.  probably a file permissions thing.
-			if(!file_exists("/tmp/test.txt")) {
+			if(!file_exists($file)) {
 				if(!$didwrite)
 					$email_message .= "\nWARNING: Application could not be logged, reason unknown.\n";
 			}
@@ -123,12 +126,11 @@
 				fwrite($fh, $email_message);
 				fclose($fh);
 			}
-			
 			// create email headers
 			$headers = 'From: '.$email_from."\r\n".
 				'Reply-To: '.$email."\r\n" .
 					'X-Mailer: PHP/' . phpversion();
-			@mail($email_to, $email_subject, $email_message, $headers);  
+			@mail($email_to, $email_subject, $email_message, $headers);
 		}
 		?>
  
@@ -146,7 +148,7 @@
 		left:50%;""
 		type="button"
 		value="Back"
-		onclick="location.href='./index.html'" />
+		onclick="location.href='./index.shtml'" />
  
 	</body>
 	</html>
