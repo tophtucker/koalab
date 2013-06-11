@@ -120,9 +120,6 @@
 		
 		<div class="nav-section" id="membership">
 			
-			<h1 align="center">Become a Member!</h1>
-			<br>
-			<br>
 			<div class="container membership" >
 				<div class="left-element membership" onClick="membershipOptionClicked(0)">
 					<h2 align="center" class="listheaderleft membership">Dedicated Desk</h2>
@@ -197,7 +194,7 @@
       <hr>
 
       <div class="footer nav-section">
-        <p>&copy; Koa Labs 2013</p>  <!--#include virtual="/counter/count.cgi?page=mainsitecounter"-->
+        <p><a style="float:left;padding-right:8px;" href="https://plus.google.com/117223557890146178339" rel="publisher"><img src="img/Google_Plus_Shiny_Icon.svg" style="height:44px;width:44px;"></a> <a style="float:left;padding-right:8px;" href="https://www.facebook.com/KoaLabStartUpClub" rel="publisher"><img src="img/facebook-icon.png" style="height:44px;width:44px;"></a><a style="float:left;" href="http://www.linkedin.com/company/koa-lab" rel="publisher"><img src="img/linkedin-icon-gif.gif" style="height:44px;width:44px;"></a><label style="float:right;">&copy; Koa Labs 2013</label> </p>
       </div>
 
     </div> <!-- /container -->
