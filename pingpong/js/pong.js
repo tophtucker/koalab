@@ -67,18 +67,19 @@ function logGame(form) {
 function addPlayer() {
 	var player = document.getElementById('newPlayer').value;
 	if (player.length == 0) {
-		document.getElementById('warningLabel').innerHTML = "Needs to have length more than NOTHING";
+		document.getElementById('warningLabel').innerHTML = "Name needs to have length more than NOTHING";
 	}
 	if ( /[^A-Za-z\d]/.test(player) ) {
 		document.getElementById('warningLabel').innerHTML = "Invalid Characters Detected";
 	}
-	// $.get( 
-// 		"php/pong.php",
-// 		{ function: "addPlayer", player1: player },
-// 		function(data) {
-// 			location.reload();
-// 		}
-// 	);
+	var email = document.getElementById('newPlayerEmail').value;
+	$.get( 
+		"php/pong.php",
+		{ function: "addPlayer", player1: player, email: email, email_confirmed: false },
+		function(data) {
+			// location.reload();
+		}
+	);
 }
 
 function startup() {

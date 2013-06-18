@@ -74,6 +74,28 @@ hr {
 	color: white;
 }
 
+.social-media h2{
+	padding-left: 15px;
+}
+
+.social-media a {
+	height: 40px;
+	width: 40px;
+	float: left;
+	padding-right: 12px;
+	padding-top: 4px;
+}
+
+.social-media img {
+	height: 40px;
+	width: 40px;
+}
+
+.koa-logo {
+	float: left;
+	padding-right: 20px;
+}
+
 /* PORTFOLIO */
 
 .thumbnails li {

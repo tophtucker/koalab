@@ -19,6 +19,9 @@
       <script src="../assets/js/html5shiv.js"></script>
     <![endif]-->
 
+		<!-- Evergage Javascript Beacon -->
+		<script src="js/evergage.js"></script>
+
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
@@ -45,7 +48,12 @@
           <li><a href="#location">Find us</a></li>
           <li><a href="http://blog.koalab.com/">Blog</a></li>
         </ul>
-        <h3 class="muted"><a href="#"><img src="img/koa_labs_logo_horizontal.png"></a></h3>
+        <h3 class="muted"><a class="koa-logo" href="#"><img src="img/koa_labs_logo_horizontal.png"></a></h3>
+		<h2 class="social-media">
+			<a class="social-media" href="https://plus.google.com/117223557890146178339" rel="publisher"><img src="img/Google_Plus_Shiny_Icon.svg"></a> 
+			<a class="social-media" href="https://www.facebook.com/KoaLabStartUpClub" rel="publisher"><img src="img/facebook-icon.png"class="social-media"></a>
+			<a class="social-media" href="http://www.linkedin.com/company/koa-lab" rel="publisher"><img src="img/linkedin-icon-gif.gif" class="social-media"></a>
+		</h2>
       </div>
       
       
@@ -194,7 +202,7 @@
       <hr>
 
       <div class="footer nav-section">
-        <p><a style="float:left;padding-right:8px;" href="https://plus.google.com/117223557890146178339" rel="publisher"><img src="img/Google_Plus_Shiny_Icon.svg" style="height:44px;width:44px;"></a> <a style="float:left;padding-right:8px;" href="https://www.facebook.com/KoaLabStartUpClub" rel="publisher"><img src="img/facebook-icon.png" style="height:44px;width:44px;"></a><a style="float:left;" href="http://www.linkedin.com/company/koa-lab" rel="publisher"><img src="img/linkedin-icon-gif.gif" style="height:44px;width:44px;"></a><label style="float:right;">&copy; Koa Labs 2013</label> </p>
+        <p><label style="float:right;">&copy; Koa Labs 2013</label> </p>
       </div>
 
     </div> <!-- /container -->
@@ -271,11 +279,16 @@
 		$('.logo').tooltip();
 		
 		//makes companies logos centered vertically
-		$(document).ready(function() {
+		$(window).load(function() {
 	    	$(".logolink").each(function(){
+				console.log("working on " + $(this).attr('href'));
+				console.log("span4 height = " + $(".span4").height());
+				console.log("this height = " + $(this).height());
 	      	  var mytop = ($(".span4").height() - $(this).height()) / 2;
-	      	$(this).css({top: mytop + 'px'});
+			console.log("margin-top = " + mytop);
+			console.log("this css before = " + $(this).css('margin-top') );
 		  	$(this).css({'margin-top': mytop + 'px'});
+			console.log("this css after = " + $(this).css('margin-top')  + "\n");
 	    	});
 	  	});
 		

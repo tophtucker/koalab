@@ -18,6 +18,12 @@ if( $_REQUEST["function"] )
 		$winner = $_REQUEST['winner'];
 		logGame($player1, $player2, $winner);
 		break;
+		case 'addPlayer':
+		$player = $_REQUEST['player'];
+		$email = $_REQUEST['email'];
+		$email_confirmed = $_REQUEST['email_confirmed'];
+		addPlayer($player, $email, $email_confirmed);
+		break;
 		default:
 		return;
 	}
@@ -105,6 +111,41 @@ function logGame($player1, $player2, $winner) {
 	}
 	$new_file_contents = trim($new_file_contents, "\n");
 	file_put_contents($player_file, $new_file_contents);
+}
+
+function addPlayer($player, $email, $email_confirmed) {
+	if ($email_confirmed) {
+		
+	}
+	$email_to = $email;
+	$email_subject = "Confirmation for Koa Labs Ping Pong";
+	$email_from = "sam@koalab.com";
+	$email_message = "Hello ".$player.", \n\nClick on dat link down der to finish signing up.\n\n";
+	
+	// get current url
+	$pageURL = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
+	if ($_SERVER["SERVER_PORT"] != "80")
+	{
+	    $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+	} 
+	else 
+	{
+	    $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+	}
+	
+	//get just the directory in the url
+	$file_name = substr(__FILE__, strlen(__DIR__), strlen(__FILE__));
+	$page_dir = explode($file_name, $pageURL)[0]."/";
+	
+	
+	$email_message .= $pageURL;
+	
+	ChromePhp::log($pageURL."\n".$file_name."\n".$page_dir);
+	
+	$headers = 'From: '.$email_from."\r\n".
+		'Reply-To: '.$email."\r\n" .
+			'X-Mailer: PHP/' . phpversion();
+	@mail($email_to, $email_subject, $email_message, $headers);
 }
 
 ?>
