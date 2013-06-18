@@ -279,16 +279,16 @@
 		$('.logo').tooltip();
 		
 		//makes companies logos centered vertically
+		$(document).ready(function() {
+	    	$(".logolink").each(function(){
+	      	  var mytop = ($(".span4").height() - $(this).height()) / 2;
+		  	$(this).css({'margin-top': mytop + 'px'});
+	    	});
+	  	});
 		$(window).load(function() {
 	    	$(".logolink").each(function(){
-				console.log("working on " + $(this).attr('href'));
-				console.log("span4 height = " + $(".span4").height());
-				console.log("this height = " + $(this).height());
 	      	  var mytop = ($(".span4").height() - $(this).height()) / 2;
-			console.log("margin-top = " + mytop);
-			console.log("this css before = " + $(this).css('margin-top') );
 		  	$(this).css({'margin-top': mytop + 'px'});
-			console.log("this css after = " + $(this).css('margin-top')  + "\n");
 	    	});
 	  	});
 		
