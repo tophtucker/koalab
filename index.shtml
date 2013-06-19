@@ -20,7 +20,7 @@
     <![endif]-->
 
 		<!-- Evergage Javascript Beacon -->
-		<script src="js/evergage.js"></script>
+		 <script src="js/evergage.js"></script>
 
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
@@ -36,16 +36,16 @@
 
     <div class="container-narrow">
       
+
+      <!-- NAVIGATION BAR --> 
       
-      <!-- NAVIGATION BAR -->
       
-      
-      <div class="masthead navbar-fixed-top">
+      <div id="navbar-div" class="masthead navbar-fixed-top">
         <ul id="navbar" class="nav nav-pills pull-right">
-          <li id="firstnav"><a href="#home">Home</a></li>
-          <li><a href="#companies">Companies</a></li>
-		  <li><a class = "membership-nav-pill"href="#membership">Membership <b>&#155;</b>	</a></li>
-          <li><a href="#location">Find us</a></li>
+          <li id="firstnav"><a class="nav-pill" href="#home">Home</a></li>
+          <li><a class="nav-pill" href="#companies">Companies</a></li>
+		  <li><a class="membership-nav-pill" href="#membership">Membership <b>&#155;</b>	</a></li>
+          <li><a class="nav-pill" href="#location">Find us</a></li>
           <li><a href="http://blog.koalab.com/">Blog</a></li>
         </ul>
         <h3 class="muted"><a class="koa-logo" href="#"><img src="img/koa_labs_logo_horizontal.png"></a></h3>
@@ -58,8 +58,8 @@
       <div id="home" class="jumbotron nav-section nav-section-top">
   		<h2 class="social-media">
   			<a class="social-media" href="https://plus.google.com/117223557890146178339" rel="publisher"><img src="img/Google_Plus_Shiny_Icon.svg"></a> 
-  			<a class="social-media" href="https://www.facebook.com/KoaLabStartUpClub" rel="publisher"><img src="img/facebook-icon.png"class="social-media"></a>
   			<a class="social-media" href="http://www.linkedin.com/company/koa-lab" rel="publisher"><img src="img/linkedin-icon-gif.gif" class="social-media"></a>
+			<a class="social-media" href="https://www.facebook.com/KoaLabStartUpClub" rel="publisher"><img src="img/facebook-icon.png"class="social-media"></a>
   		</h2>
 		  <br>
 		  <br>
@@ -291,6 +291,27 @@
 		  	$(this).css({'margin-top': mytop + 'px'});
 	    	});
 	  	});
+		
+		//fixes disappearing nav bar elements sometimes
+		$(document).ready(function() {
+			setNavBarElements();
+		});
+		
+		function setNavBarElements() {
+			$(".nav-pill,.membership-nav-pill").each(function() {
+				$(this).unbind('click');
+				$(this).click(function(e) {
+					e.preventDefault();
+					navPillClicked($(this).attr('href'));
+				});
+			});
+		}
+		
+		function navPillClicked(href) {
+			window.location.href="./index.shtml"+href;
+			$('#navbar-div').load('index.shtml #navbar-div', setNavBarElements);
+			// window.location=href;
+		}
 		
 		//makes membership options clickable
 		function membershipOptionClicked(optionNum) {
