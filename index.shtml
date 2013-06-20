@@ -285,6 +285,7 @@
 		  	$(this).css({'margin-top': mytop + 'px'});
 	    	});
 	  	});
+		
 		$(window).load(function() {
 	    	$(".logolink").each(function(){
 	      	  var mytop = ($(".span4").height() - $(this).height()) / 2;
@@ -292,30 +293,15 @@
 	    	});
 	  	});
 		
-		//fixes disappearing nav bar elements sometimes
 		$(document).ready(function() {
-			setNavBarElements();
-		});
-		
-		function setNavBarElements() {
-			$(".nav-pill,.membership-nav-pill").each(function() {
-				$(this).unbind('click');
-				$(this).click(function(e) {
-					e.preventDefault();
-					navPillClicked($(this).attr('href'));
-				});
+			$('#navbar-div ul li a').bind('click', function(e) {
+				console.log("herhaurh");
+			   e.preventDefault();
+			   $('html, body').animate({ scrollTop: $(this.hash).offset().top }, 300);
+
+			   // edit: Opera requires the "html" elm. animated
 			});
-			// $('[data-spy="scroll"]').each(function () {
-// 				console.log("here");  
-// 			  var $spy = $(this).scrollspy('refresh');  
-// 			});
-		}
-		
-		function navPillClicked(href) {
-			window.location.href="./index.shtml"+href;
-			$('#navbar-div').load('index.shtml #navbar-div', setNavBarElements);
-			// window.location=href;
-		}
+		});
 		
 		//makes membership options clickable
 		function membershipOptionClicked(optionNum) {
