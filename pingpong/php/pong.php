@@ -31,7 +31,7 @@ if( $_REQUEST["function"] )
 
 function getOptionsFromLeaderboard() {
 	$file_handle = fopen("./leaderboard.dat", "r");
-	$return_string = "";
+	$return_string = "<option value='Select a Player'>Select a Player</option>";
 	while (!feof($file_handle)) {
 		$player = fgets($file_handle);
 		$return_string .= "<option value=".$player.">".$player."</option>";
@@ -115,7 +115,13 @@ function logGame($player1, $player2, $winner) {
 
 function addPlayer($player, $email, $email_confirmed) {
 	if ($email_confirmed) {
-		
+		$leaderboard_file = fopen("./leaderboard.dat", 'a');
+		$players_file = fopen("./players.dat", 'a');
+		fwrite($leaderboard_file, "\n".$player);
+		fwrite($players_file, "\n%".$player."$0$0".'$'."never$".$email."%");
+		fclose($leaderboard_file);
+		fclose($players_file);
+		return;
 	}
 	$email_to = $email;
 	$email_subject = "Confirmation for Koa Labs Ping Pong";
@@ -135,12 +141,13 @@ function addPlayer($player, $email, $email_confirmed) {
 	
 	//get just the directory in the url
 	$file_name = substr(__FILE__, strlen(__DIR__), strlen(__FILE__));
-	$page_dir = explode($file_name, $pageURL)[0]."/";
+	$page_dir = explode($file_name, $pageURL);
+	$function_string = str_replace("false", "true", $page_dir[1]);
+	$page_dir = $page_dir[0];
 	
+	$targetURL = $page_dir.$file_name.$function_string;
 	
 	$email_message .= $pageURL;
-	
-	ChromePhp::log($pageURL."\n".$file_name."\n".$page_dir);
 	
 	$headers = 'From: '.$email_from."\r\n".
 		'Reply-To: '.$email."\r\n" .

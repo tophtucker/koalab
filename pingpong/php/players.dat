@@ -1,11 +1,11 @@
-Formula: Player-Win-Loss-LastGamePlayed
+Formula: Player-Win-Loss-LastGamePlayed-Email
 
-%Horak$5$2$05/29/2013%
-%Kelsey$1$3$05/29/2013%
-%Schif$0$0$Not Since The Website%
-%Brandly$1$1$05/29/2013%
-%BenW$0$1$05/29/2013%
-%Chittim$1$0$05/29/2013%
-%Dana$0$0$Not Since The Website%
-%Giles$0$0$Not Since The Website%
-%Sam$0$1$05/29/2013%
+%Horak$5$2$05/29/2013$testemail%
+%Kelsey$1$3$05/29/2013$testemail%
+%Schif$0$0$Not Since The Website$testemail%
+%Brandly$1$1$05/29/2013$testemail%
+%BenW$0$1$05/29/2013$testemail%
+%Chittim$1$0$05/29/2013$testemail%
+%Dana$0$0$Not Since The Website$testemail%
+%Giles$0$0$Not Since The Website$testemail%
+%Sam$0$1$05/29/2013$testemail%

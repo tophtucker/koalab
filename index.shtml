@@ -305,6 +305,10 @@
 					navPillClicked($(this).attr('href'));
 				});
 			});
+			// $('[data-spy="scroll"]').each(function () {
+// 				console.log("here");  
+// 			  var $spy = $(this).scrollspy('refresh');  
+// 			});
 		}
 		
 		function navPillClicked(href) {
