@@ -286,12 +286,12 @@
 					}
 				});
 		
-				//makes companies logos centered vertically
-				$(document).ready(function() {
+				//makes companies logos same size and centered vertically
+				$(window).load(function() {
+					console.log("window load");
 					var logolink_height = $(".logolink").height();
 					var logolink_width = $(".logolink").width();
 					var ratio = logolink_width / logolink_height;
-					console.log("height = " + logolink_height + " and width = " + logolink_width);
 					$(".logolink img").each(function(){
 						var height = $(this).height();
 						var width = $(this).width();
@@ -303,14 +303,6 @@
 						}
 					});
 					$(".logolink img").each(function(){
-						var mytop = ($(".span4").height() - $(this).height()) / 2;
-						$(this).css({'margin-top': mytop + 'px'});
-						console.log($(".span4").height() + "   " + $(this).height() + "   " + mytop);
-					});
-				});
-		
-				$(window).load(function() {
-					$(".logolink").each(function(){
 						var mytop = ($(".span4").height() - $(this).height()) / 2;
 						$(this).css({'margin-top': mytop + 'px'});
 					});
