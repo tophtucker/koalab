@@ -65,6 +65,8 @@ function getLeaderboard() {
 			// split into categories
 			$pieces = explode("$", $line);
 			$rest = $pieces[1]."$".$pieces[2]."$".$pieces[3];
+			if ($pieces[0] == "")
+				continue;
 			$players_array[$pieces[0]] = $rest;
 		}
 	}
@@ -85,10 +87,12 @@ function getLeaderboard() {
 		$counter += 1;
 	}
 	
-	$return_string.="<br><h2>The Pool of the Damned<h2><br>";
+	$return_string.="<h3>The Pool of the Damned<h3>";
 	
 	while (!feof($file_handle_leaderboard)) {
 		$player = trim(fgets($file_handle_leaderboard), " \t\n\r\0");
+		if($player == "")
+			continue;
 		$player_stats = explode("$",$players_array[$player]);
 		$this_entry = "<label class='lbplayer'>".$player."</label><label class='lbwins'>".$player_stats[0]."</label><label class='lblosses'>".$player_stats[1]."</label><label class='lblastplayed'>".$player_stats[2]."</label>";
 		$return_string .= $this_entry;
@@ -216,23 +220,25 @@ function checkBumps() {
 			$players_array[$pieces[0]] = $pieces[3];
 		}
 	}
-	ChromePhp::log(count($players_array));
+	ChromePhp::log(__LINE__.": ".count($players_array));
 	$todays_date = date("m/d/Y");
 	$today_timestamp = strtotime($todays_date);
 	$last_week_timestamp = $today_timestamp-7*86400+7200;
+	ChromePhp::log(__LINE__.": ".file_get_contents("./leaderboard.dat"));
 	foreach ($players_array as $player => $last_played) {
 		$last_played_timestamp = strtotime($last_played);
-		ChromePhp::log($player."  ".$last_played."  ".$last_played_timestamp);
+		ChromePhp::log(__LINE__.": ".$player."  ".$last_played."  ".$last_played_timestamp);
 		if ($last_week_timestamp > $last_played_timestamp) {
 			changePosition($player, 9999);
-			ChromePhp::log($player." moved to bottom");
+			ChromePhp::log(__LINE__.": ".$player." moved to bottom");
 		}
+		ChromePhp::log(__LINE__.": ".file_get_contents("./leaderboard.dat"));
 	}
 	fclose($file_handle_players);
 }
 
 function changePosition($player, $motion) {
-	ChromePhp::log("1 ".$player." ".$motion);
+	ChromePhp::log(__LINE__.": ".$player." ".$motion);
 	$position_array = getPositions();
 	$position = getPlayerPosition($player);
 	$count = count($position_array);
@@ -240,23 +246,35 @@ function changePosition($player, $motion) {
 		$position = $count;
 		removeFromPoolOfTheDamned($player);
 	}
-	ChromePhp::log("2 ".$position_array." ".$count." ".$position);
-	if ($position+$motion > $count-1 && $motion > 0) {
-		ChromePhp::log("3");
-		$motion = $count - 1 - $position;
-	}
-	elseif($position+$motion < 0 && $motion < 0) {
-		ChromePhp::log("4");
+	ChromePhp::log(__LINE__.": ".$position_array." ".$count." ".$position);
+	if($position+$motion < 0 && $motion < 0) {
+		ChromePhp::log(__LINE__);
 		$motion = -$position;
 	}
+	$toTheDamned = false;
+	if ($position+$motion > $count-1 && $motion > 0) {
+		ChromePhp::log(__LINE__);
+		$toTheDamned = true;
+		addToPoolOfTheDamned($player);
+	}
 	while ($motion > 0) {
+		if( $position == $count ) {
+			if ( $toTheDamned ) {
+				unset($position_array[$position]);
+				break;
+			}
+			else {
+				break;
+			}
+		}
 		$temp = $position_array[$position+1];
 		$position_array[$position+1] = $player;
 		$position_array[$position] = $temp;
 		$position++;
 		$motion--;
-		ChromePhp::log("6");
+		ChromePhp::log(__LINE__);
 	}
+	
 	while ($motion < 0) {
 		
 		$temp = $position_array[$position-1];
@@ -264,19 +282,20 @@ function changePosition($player, $motion) {
 		$position_array[$position] = $temp;
 		$position--;
 		$motion++;
-		ChromePhp::log("7");
+		ChromePhp::log(__LINE__);
 	}
 	$count = count($position_array);
-	ChromePhp::log("8 ".$new_file_contents." ".$count);
+	ChromePhp::log(__LINE__.": ".$new_file_contents." ".$count);
 	for( $i = 0 ; $i < $count ; $i++ ) {
 		$new_file_contents .= $position_array[$i]."\n";
-		ChromePhp::log("9 ".$new_file_contents);
+		ChromePhp::log(__LINE__.": ".$new_file_contents);
 	}
 	//now for the pool of the damned
-	$new_file_contents .= "\n";
 	$pool = getPoolOfTheDamned();
-	foreach ($pool as $entry) {
-		$new_file_contents .= $entry."\n";
+	if (count($pool) > 0)
+		$new_file_contents .= $pool[0];
+	for( $i = 1 ; $i < count($pool) ; $i++ ) {
+		$new_file_contents .= "\n".$pool[$i];
 	}
 	trim($new_file_contents, "\n");
 	file_put_contents("./leaderboard.dat", $new_file_contents);
@@ -312,15 +331,32 @@ function getPositions() {
 function removeFromPoolOfTheDamned($player) {
 	$file_handler = fopen("./leaderboard.dat", "r");
 	$new_file_contents = "";
+	$first = true;
 	while (!feof($file_handler)) {
 		$line = fgets($file_handler);
 		$line = trim($line, "%\n\t");
 		if ($line == $player)
 			continue;
-		$new_file_contents .= $line."\n"
+		if ($first) {
+			$new_file_contents .= $line;
+			$first = false;
+			continue;
+		}
+		$new_file_contents .= "\n".$line;
 	}
 	trim($new_file_contents, "\n");
 	fclose($file_handler);
+}
+
+function addToPoolOfTheDamned($player) {
+	$file_handler = fopen("./leaderboard.dat", "a");
+	fwrite($file_handler, "\n".$player);
+	fclose($file_handler);
+	ChromePhp::log(__LINE__.": ");
+	$pool = getPoolOfTheDamned();
+	foreach($pool as $entry) {
+		ChromePhp::log("\t".$entry);
+	}
 }
 
 function getPoolOfTheDamned() {
