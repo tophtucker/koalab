@@ -1,5 +1,12 @@
 <?php
 
+// Ping pong stuff:
+// Are you sure? when logging a game CHECK
+// WE sign them up, their confirmation email will have a link to the page that they should save as a bookmark or whatever
+// Email confirmation to loser when logging a game
+// API to remove players?  or just go in and delete from text file
+// 7-day bump down to bottom
+
 include "ChromePhp.php";
 
 if( $_REQUEST["function"] )
@@ -24,6 +31,9 @@ if( $_REQUEST["function"] )
 		$email_confirmed = $_REQUEST['email_confirmed'];
 		addPlayer($player, $email, $email_confirmed);
 		break;
+		case 'checkBumps':
+		checkBumps();
+		break;
 		default:
 		return;
 	}
@@ -34,6 +44,8 @@ function getOptionsFromLeaderboard() {
 	$return_string = "<option value='Select a Player'>Select a Player</option>";
 	while (!feof($file_handle)) {
 		$player = fgets($file_handle);
+		if($player == "")
+			continue;
 		$return_string .= "<option value=".$player.">".$player."</option>";
 	}
 	fclose($file_handle);
@@ -64,11 +76,24 @@ function getLeaderboard() {
 	
 	while (!feof($file_handle_leaderboard)) {
 		$player = trim(fgets($file_handle_leaderboard), " \t\n\r\0");
+		// pool of the damned
+		if ($player == "")
+			break;
 		$player_stats = explode("$",$players_array[$player]);
 		$this_entry = "<label class='lbplayer'>".$counter.". ".$player."</label><label class='lbwins'>".$player_stats[0]."</label><label class='lblosses'>".$player_stats[1]."</label><label class='lblastplayed'>".$player_stats[2]."</label>";
 		$return_string .= $this_entry;
 		$counter += 1;
 	}
+	
+	$return_string.="<br><h2>The Pool of the Damned<h2><br>";
+	
+	while (!feof($file_handle_leaderboard)) {
+		$player = trim(fgets($file_handle_leaderboard), " \t\n\r\0");
+		$player_stats = explode("$",$players_array[$player]);
+		$this_entry = "<label class='lbplayer'>".$player."</label><label class='lbwins'>".$player_stats[0]."</label><label class='lblosses'>".$player_stats[1]."</label><label class='lblastplayed'>".$player_stats[2]."</label>";
+		$return_string .= $this_entry;
+	}
+	
 	fclose($file_handle_leaderboard);
 	return $return_string;
 }
@@ -78,6 +103,16 @@ function logGame($player1, $player2, $winner) {
 	$file_contents = file_get_contents($player_file);
 	$file_contents = explode("\n", $file_contents);
 	$new_file_contents = "";
+	$loser = ($player1==$winner)?$player2:$player1;
+	$winner_pos = getPlayerPosition($winner);
+	$loser_pos = getPlayerPosition($loser);
+	$positions = getPositions();
+	if ($player1_pos == -1) {
+		$player1_pos = count($positions);
+	}
+	if ($player2_pos == -1) {
+		$player2_pos = count($positions);
+	}
 	foreach ($file_contents as $line) {
 		if ($line[0] != "%") {
 			$new_file_contents .= $line."\n";
@@ -111,6 +146,19 @@ function logGame($player1, $player2, $winner) {
 	}
 	$new_file_contents = trim($new_file_contents, "\n");
 	file_put_contents($player_file, $new_file_contents);
+	
+	// affect leaderboard
+	$difference = $loser_pos - $winner_pos;
+	if($difference == 2 || $difference == 1) {
+		changePosition($winner, -$difference);
+		if( $difference == 2)
+		changePosition($loser, $difference-1);
+	}
+	// if no difference, they both came from pool of the damned
+	elseif($difference == 0) {
+		changePosition($winner, -1);
+		changePosition($loser, -1);
+	}
 }
 
 function addPlayer($player, $email, $email_confirmed) {
@@ -153,6 +201,147 @@ function addPlayer($player, $email, $email_confirmed) {
 		'Reply-To: '.$email."\r\n" .
 			'X-Mailer: PHP/' . phpversion();
 	@mail($email_to, $email_subject, $email_message, $headers);
+}
+
+function checkBumps() {
+	$file_handle_players = fopen("./players.dat", "r");
+	$players_array = array();
+	while (!feof($file_handle_players)) {
+		$line = fgets($file_handle_players);
+		if ( $line[0] == "%" ) {
+			// strip the %'s and newline stuff
+			$line = trim($line, "%\n\t");
+			// split into categories
+			$pieces = explode("$", $line);
+			$players_array[$pieces[0]] = $pieces[3];
+		}
+	}
+	ChromePhp::log(count($players_array));
+	$todays_date = date("m/d/Y");
+	$today_timestamp = strtotime($todays_date);
+	$last_week_timestamp = $today_timestamp-7*86400+7200;
+	foreach ($players_array as $player => $last_played) {
+		$last_played_timestamp = strtotime($last_played);
+		ChromePhp::log($player."  ".$last_played."  ".$last_played_timestamp);
+		if ($last_week_timestamp > $last_played_timestamp) {
+			changePosition($player, 9999);
+			ChromePhp::log($player." moved to bottom");
+		}
+	}
+	fclose($file_handle_players);
+}
+
+function changePosition($player, $motion) {
+	ChromePhp::log("1 ".$player." ".$motion);
+	$position_array = getPositions();
+	$position = getPlayerPosition($player);
+	$count = count($position_array);
+	if ($position == -1 && $motion < 0) {
+		$position = $count;
+		removeFromPoolOfTheDamned($player);
+	}
+	ChromePhp::log("2 ".$position_array." ".$count." ".$position);
+	if ($position+$motion > $count-1 && $motion > 0) {
+		ChromePhp::log("3");
+		$motion = $count - 1 - $position;
+	}
+	elseif($position+$motion < 0 && $motion < 0) {
+		ChromePhp::log("4");
+		$motion = -$position;
+	}
+	while ($motion > 0) {
+		$temp = $position_array[$position+1];
+		$position_array[$position+1] = $player;
+		$position_array[$position] = $temp;
+		$position++;
+		$motion--;
+		ChromePhp::log("6");
+	}
+	while ($motion < 0) {
+		
+		$temp = $position_array[$position-1];
+		$position_array[$position-1] = $player;
+		$position_array[$position] = $temp;
+		$position--;
+		$motion++;
+		ChromePhp::log("7");
+	}
+	$count = count($position_array);
+	ChromePhp::log("8 ".$new_file_contents." ".$count);
+	for( $i = 0 ; $i < $count ; $i++ ) {
+		$new_file_contents .= $position_array[$i]."\n";
+		ChromePhp::log("9 ".$new_file_contents);
+	}
+	//now for the pool of the damned
+	$new_file_contents .= "\n";
+	$pool = getPoolOfTheDamned();
+	foreach ($pool as $entry) {
+		$new_file_contents .= $entry."\n";
+	}
+	trim($new_file_contents, "\n");
+	file_put_contents("./leaderboard.dat", $new_file_contents);
+}
+
+function getPlayerPosition($player) {
+	$position_array = getPositions();
+	foreach($position_array as $index => $entry) {
+		if ($entry == $player)
+			return $index;
+		if ($entry == "")
+			return -1;
+	}
+}
+
+function getPositions() {
+	$position_array = array();
+	$file_handler = fopen("./leaderboard.dat", "r");
+	$i = 0;
+	while (!feof($file_handler)) {
+		$line = fgets($file_handler);
+		$line = trim($line, "%\n\t");
+		// found pool of the damned
+		if ($line == "")
+			break;
+		$position_array[$i] = $line;
+		$i++;
+	}
+	fclose($file_handler);
+	return $position_array;
+}
+
+function removeFromPoolOfTheDamned($player) {
+	$file_handler = fopen("./leaderboard.dat", "r");
+	$new_file_contents = "";
+	while (!feof($file_handler)) {
+		$line = fgets($file_handler);
+		$line = trim($line, "%\n\t");
+		if ($line == $player)
+			continue;
+		$new_file_contents .= $line."\n"
+	}
+	trim($new_file_contents, "\n");
+	fclose($file_handler);
+}
+
+function getPoolOfTheDamned() {
+	$file_handler = fopen("./leaderboard.dat", "r");
+	while (!feof($file_handler)) {
+		$line = fgets($file_handler);
+		$line = trim($line, "%\n\t");
+		// find pool of the damned
+		if ($line == "")
+			break;
+	}
+	$pool = array();
+	$i = 0;
+	while (!feof($file_handler)) {
+		$line = fgets($file_handler);
+		$line = trim($line, "%\n\t");
+		$pool[$i] = $line;
+		$i++;
+	}
+	fclose($file_handler);
+	return $pool;
 }
 
 ?>

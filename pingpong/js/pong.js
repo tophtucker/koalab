@@ -21,6 +21,17 @@ function populatePlayerSelect(playerChanged) {
 	
 }
 
+function checkBumps() {
+	$.get(
+		"php/pong.php",
+		{function: "checkBumps"},
+		function(data) {
+			populatePlayerSelect(0);
+			getLeaderboard();
+		}
+	);
+}
+
 function populateWinnerSelect() {
 	if (document.getElementById('player1').selectedIndex == 0 || document.getElementById('player2').selectedIndex == 0) {
 		document.getElementById('winner').innerHTML = "<option>Choose 2 Players</option";
@@ -62,9 +73,17 @@ function logGame(form) {
 		document.getElementById('logWarningLabel').innerHTML="You gotta select a player, bro.";
 		return;
 	}
+	var player1 = form.player1.value;
+	var player2 = form.player2.value;
+	var winner = form.winner.value;
+	var loser = (player1=winner)?player2:player1;
+	
+	var r=window.confirm("Are you sure that " + winner + " beat " + loser);
+	if (!r)
+		return;
 	$.get( 
 		"php/pong.php",
-		{ function: "logGame", player1: form.player1.value, player2: form.player2.value, winner: form.winner.value },
+		{ function: "logGame", player1: player1, player2: player2, winner: winner },
 		function(data) {
 			location.reload();
 		}
@@ -92,6 +111,5 @@ function addPlayer() {
 }
 
 function startup() {
-	populatePlayerSelect(0);
-	getLeaderboard();
+	checkBumps();
 }
