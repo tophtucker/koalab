@@ -228,7 +228,7 @@ function checkBumps() {
 	foreach ($players_array as $player => $last_played) {
 		$last_played_timestamp = strtotime($last_played);
 		ChromePhp::log(__LINE__.": ".$player."  ".$last_played."  ".$last_played_timestamp);
-		if ($last_week_timestamp > $last_played_timestamp) {
+		if ($last_week_timestamp > $last_played_timestamp && !playerIsInPoolOfTheDamned($player)) {
 			changePosition($player, 9999);
 			ChromePhp::log(__LINE__.": ".$player." moved to bottom");
 		}
@@ -378,6 +378,18 @@ function getPoolOfTheDamned() {
 	}
 	fclose($file_handler);
 	return $pool;
+}
+
+function playerIsInPoolOfTheDamned($player) {
+	$file_handler = fopen("./leaderboard.dat", "r");
+	while (!feof($file_handler)) {
+		$line = fgets($file_handler);
+		$line = trim($line, "%\n\t");
+		if ($line == $player)
+			return false;
+		if ($line == "")
+			return true;
+	}
 }
 
 ?>
