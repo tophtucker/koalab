@@ -75,7 +75,7 @@
 			<!-- COMPANIES -->
 	  
 			<div id="companies" class="row-fluid marketing nav-section">
-				<h1 align="center">Current Members</h1>
+				<h1 align="center">In Residence</h1>
 				<br><br>
 				<ul class="thumbnails" >
 					<li class="span4">
@@ -85,7 +85,7 @@
 						<a class="logolink" href="http://matter.io"><img class="logo" src="img/companies/matterio.png" alt="MatterIO" title="Connecting people to their 3D printers"></a>
 					</li>
 					<li class="span4">
-						<a class="logolink" href="http://resurety.com/"><img class="logo" src="img/companies/resurety.jpg" alt="Resurety" title="Making wind power predictable and profitable"></a>
+						<a class="logolink" href="http://med.firecracker.me"><img class="logo" src="img/companies/firecracker.png" alt="Firecracker" title="Revolutionizing Medical Education"></a>
 					</li>
 				</ul>
 		
@@ -109,7 +109,28 @@
 						<a class="logolink" href="http://www.fetchnotes.com/"><img class="logo" src="img/companies/fetchnotes.png" alt="Fetchnotes" title="Your notes in the cloud"></a>
 					</li>
 					<li class="span4">
-						<a class="logolink" href="http://med.firecracker.me"><img class="logo" src="img/companies/firecracker.png" alt="Firecracker" title="Revolutionizing Medical Education"></a>
+						<a class="logolink" href="http://www.stottlerhenke.com/"><img class="logo" src="img/companies/stottlerhenke.png" alt="Stottler-Henke" title="Artificial Intelligence Software Solutions"></a>
+					</li>
+				</ul>
+				
+				<ul class="thumbnails">
+					<li class="span4">
+						<a class="logolink" href="http://www.koalab.com"><img class="nologo" src="img/companies/Atelion.png" alt="Atelion" title="Shhh... Stealth Mode"></a>
+					</li>
+					<li class="span4">
+						<a class="logolink" href="http://www.koalab.com/"><img class="nologo" src="img/companies/Biffle.png" alt="Biffle" title="Shhh... Stealth Mode"></a>
+					</li>
+				</ul>
+				
+				<br><br>
+				<h1 align="center">In the Wild</h1>
+				<br><br>
+				<ul class="thumbnails" >
+					<li class="span4">
+						<a class="logolink" href="http://resurety.com/"></a>
+					</li>
+					<li class="span4">
+						<a class="logolink" href="http://resurety.com/"><img class="logo" src="img/companies/resurety.jpg" alt="Resurety" title="Making wind power predictable and profitable"></a>
 					</li>
 				</ul>
 		
@@ -288,19 +309,22 @@
 		
 				//makes companies logos same size and centered vertically
 				$(window).load(function() {
-					console.log("window load");
 					var logolink_height = $(".logolink").height();
 					var logolink_width = $(".logolink").width();
 					var ratio = logolink_width / logolink_height;
 					$(".logolink img").each(function(){
 						var height = $(this).height();
 						var width = $(this).width();
-						if ( width / height >= ratio ) {
+						if ($(this).attr("class") == "nologo") {}
+						else if ( width / height >= ratio ) {
 							$(this).width("100%");
 						}
 						else {
 							$(this).height("100%");
 						}
+					});
+					$(".nologo").each(function(){
+						$(this).css({"max-height": "45%"});
 					});
 					$(".logolink img").each(function(){
 						var mytop = ($(".span4").height() - $(this).height()) / 2;
@@ -310,7 +334,6 @@
 		
 				$(document).ready(function() {
 					$('#navbar-div ul li a').bind('click', function(e) {
-						console.log("herhaurh");
 						e.preventDefault();
 						$('html, body').animate({ scrollTop: $(this.hash).offset().top }, 300);
 
