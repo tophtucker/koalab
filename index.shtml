@@ -129,7 +129,7 @@
 						<a class="logolink" href="http://www.ape-system.com/"><img class="logo" src="http://ape-system.com/images/ape_systems_logo.gif" alt="APE System" title="Strength and Conditioning. Evolved."></a>
 					</li>
 					<li class="span4">
-						<a class="logolink" href="http://www.fetchnotes.com/"><img class="logo" src="img/companies/Fetchnoteslogo.png" alt="Fetchnotes" title="Your notes in the cloud"></a>
+						<a class="logolink" href="http://www.fetchnotes.com/"><img class="logo" src="img/companies/Fetchnoteslogo.png" alt="Fetchnotes" title="Your mind's best friend"></a>
 					</li>
 					<li class="span4">
 						<a class="logolink" href="http://www.stottlerhenke.com/"><img class="logo" src="img/companies/stottlerhenke.png" alt="Stottler-Henke" title="Artificial Intelligence Software Solutions"></a>
@@ -177,10 +177,10 @@
 			
 					<div class="container membership" >
 						<!-- <div class="left-element membership"> -->
-							<h2 align="center" class="listheaderleft membership">Dedicated Desk</h2>
-							<h2 align="center" class="listheaderright membership">Dedicated Office</h2>
-							<div class = "left listcontainer membership">
-							<ul class = "membershiplistleft">
+							<h2 align="center" class="left header membership">Dedicated Desk</h2>
+							<h2 align="center" class="right header membership">Dedicated Office</h2>
+							<div class = "left list-container membership">
+							<ul class = "left list membership">
 								<li class = "membershiplistitem">1-2 people per desk</li>
 								<li class = "membershiplistitem">24/7 access</li>
 								<li class = "membershiplistitem">Unbeatable location</li>
@@ -188,8 +188,8 @@
 								<li class = "membershiplistitem">Cost: $600 per month</li>
 							</ul>
 						</div>
-						<div class="right listcontainer membership">
-							<ul class = "membershiplistright">
+						<div class="right list-container membership">
+							<ul class = "right list membership">
 								<li class = "membershiplistitem">Furnished and Private</li>
 								<li class = "membershiplistitem">24/7 access</li>
 								<li class = "membershiplistitem">Unbeatable location</li>
@@ -201,12 +201,8 @@
 						<div class="spacer1 membership"></div>
 							<h3 class="left button membership" onClick="membershipOptionClicked(0)">Apply</h3>
 							<div class="spacer2 membership"></div>
-							<!-- </div> -->
-						<!-- <div class="right-element membership"> -->
-							
 							
 							<h3 class="right button membership" onClick="membershipOptionClicked(1)">Apply</h3>
-						<!-- </div> -->
 					</div>
 					<br>
 					<br>

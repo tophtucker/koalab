@@ -165,8 +165,8 @@ hr {
 
 .membership {
 	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-		    box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .membership.container {
@@ -175,47 +175,24 @@ hr {
 	overflow: none;
 }
 
-.membership.left-element {
-	/*
-	moz-border-radius: 15px 0px 0px 15px;
-	border-radius: 15px 0px 0px 15px;
-	border-right: 0px solid black;
-	*/
-	background: lightgrey;
-	width: 50%;
-	margin: 0 auto;
-	float:left;
-	text-align: center;
-}
-
-.membership.right-element {
-	/*
-	moz-border-radius: 0px 15px 15px 0px;
-	border-radius: 0px 15px 15px 0px;
-	border-left: 0px solid black;
-	*/
-	background: white;
-	width: 50%;
-	margin: 0 auto;
-	float:left;
-	text-align: center;
-}
-
-.membership.listheaderleft {
-	/*
-	moz-border-radius: 15px 0px 0px 0px;
-	border-radius: 15px 0px 0px 0px;
-	border-bottom: 0px solid black;
-	*/
+.membership.header {
 	float: left;
 	width: 50%;
-	background: #0088cc;
 	margin:0;
 	color: white;
 	padding: .3em;
 }
 
-.membership.listheaderright {
+.membership.header.left {
+	/*
+	moz-border-radius: 15px 0px 0px 0px;
+	border-radius: 15px 0px 0px 0px;
+	border-bottom: 0px solid black;
+	*/
+	background: #0088cc;
+}
+
+.membership.header.right {
 	/*
 	moz-border-radius: 0px 15px 0px 0px;
 	border-radius: 0px 15px 0px 0px;
@@ -229,14 +206,20 @@ hr {
 	padding: .3em;
 }
 
-.membershiplistleft {
+.membership.list{
 	font-size: 18pt;
 	padding-left: .5em;
 	padding-top: .2em;
 	text-align:left;
 }
 
-.membership.listcontainer.left {
+.membership.list.left {
+}
+
+.membership.list.right {
+}
+
+.membership.list-container.left {
 	width: 50%;
 	float: left;
 	border-left: 2px solid #555;
@@ -244,7 +227,7 @@ hr {
 	border-bottom: 2px solid #555;
 }
 
-.membership.listcontainer.right {
+.membership.list-container.right {
 	width: 50%;
 	float: left;
 	border-left: 1px solid #555;
@@ -252,12 +235,7 @@ hr {
 	border-bottom: 2px solid #555;
 }
 
-.membershiplistright {
-	font-size: 18pt;
-	padding: .5em;
-	padding-top: .2em;
-	text-align:left;
-}
+
 
 .membershiplistitem {
 	padding: .3em 0em .3em 0em;
@@ -270,9 +248,9 @@ hr {
 	text-align: center;
 	color: #fff;
 	background-color: #0088cc;
-	border: solid #B03060 1px;
-	border-bottom: solid #B03060 4px;
-	text-shadow: 0px 2px 0 #B03060;
+	border: solid #1973a2 1px;
+	border-bottom: solid #1973a2 4px;
+	text-shadow: 0px 2px 0 #1973a2;
 	border-radius: .3em;
 	position: relative;
 	-webkit-transition: all 0.1s ease-out;
@@ -289,9 +267,9 @@ hr {
 	text-align: center;
 	color: #fff;
 	background-color: #c73945;
-	border: solid #B03060 1px;
-	border-bottom: solid #0088cc 4px;
-	text-shadow: 0px 2px 0 #B03060;
+	border: solid #88333b 1px;
+	border-bottom: solid #88333b 4px;
+	text-shadow: 0px 2px 0 #88333b;
 	border-radius: .3em;
 	position: relative;
 	-webkit-transition: all 0.1s ease-out;
