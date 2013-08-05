@@ -76,7 +76,7 @@ function logGame(form) {
 	var player1 = form.player1.value;
 	var player2 = form.player2.value;
 	var winner = form.winner.value;
-	var loser = (player1=winner)?player2:player1;
+	var loser = (player1==winner)?player2:player1;
 	
 	var r=window.confirm("Are you sure that " + winner + " beat " + loser);
 	if (!r)
@@ -85,7 +85,7 @@ function logGame(form) {
 		"php/pong.php",
 		{ function: "logGame", player1: player1, player2: player2, winner: winner },
 		function(data) {
-			location.reload();
+			// location.reload();
 		}
 	);
 }
@@ -105,7 +105,7 @@ function addPlayer() {
 		"php/pong.php",
 		{ function: "addPlayer", player: player, email: email, email_confirmed: false },
 		function(data) {
-			location.reload();
+			// location.reload();
 		}
 	);
 }

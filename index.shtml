@@ -1,5 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+                    |       :     . |
+                    | '  :      '   |
+                    |  .  |   '  |  |
+           .--._ ...:.. _.--. ,  '  |
+          (  ,  `        `  ,)   .  |
+           '/              \'  |    |
+            |  o   /\   o  |       :|     WE HOPE YOU HAVE A
+            \      \/     / :  '    |       KOALA-TY EXPERIENCE!
+            /'._   ^^   .;__     .  | 
+          /`    `""""""`      `\=   |       
+        /`                     /=  .|
+       ;             '--,---'=      |
+       |                 `\  |    . |
+       \                   \_ :     |
+       /'.                     `\=  |
+       \/`--......            /=    |
+                   |`-.        /= : |
+                   | : `-.__ /` .   |
+                   |jgs .   ` |    '|
+                   |  .  : `   . |  |
+			   -->
 <head>
 	<meta charset="utf-8">
 	<title>Koa Labs</title>
@@ -42,13 +64,14 @@
       
 			<div id="navbar-div" class="masthead navbar-fixed-top">
 				<ul id="navbar" class="nav nav-pills pull-right">
-					<li id="firstnav"><a class="nav-pill" href="#home">Home</a></li>
-					<li><a class="nav-pill" href="#companies">Companies</a></li>
+					<li id="firstnav"><a class="other-nav-pill" href="#home">Home</a></li>
+					<li><a class="other-nav-pill" href="#companies">Companies</a></li>
 					<li><a class="membership-nav-pill" href="#membership">Membership <b>&#155;</b>	</a></li>
-					<li><a class="nav-pill" href="#location">Find us</a></li>
-					<li><a href="http://blog.koalab.com/">Blog</a></li>
+					<li><a class="other-nav-pill" href="#location">Find us</a></li>
+					<li><a id="blog" href="http://blog.koalab.com/">Blog</a></li>
 				</ul>
 				<h3 class="muted"><a class="koa-logo" href="#"><img src="img/koa_labs_logo_horizontal.png"></a></h3>
+				<div style="float:left;width=300px;padding: 20%;padding-top:25px;padding-bottom:25px;" id="evergage-message-div"></div>
 			</div>
       
       
@@ -59,7 +82,7 @@
 				<h2 class="social-media">
 					<a class="social-media" href="https://plus.google.com/117223557890146178339" rel="publisher"><img src="img/Google_Plus_Shiny_Icon.svg"></a> 
 					<a class="social-media" href="http://www.linkedin.com/company/koa-lab" rel="publisher"><img src="img/linkedin-icon-gif.gif" class="social-media"></a>
-					<a class="social-media" href="https://www.facebook.com/KoaLabStartUpClub" rel="publisher"><img src="img/facebook-icon.png"class="social-media"></a>
+					<a class="social-media" href="https://www.facebook.com/KoaLabsStartUpClub" rel="publisher"><img src="img/facebook-icon.png"class="social-media"></a>
 				</h2>
 				<br>
 				<br>
@@ -75,7 +98,7 @@
 			<!-- COMPANIES -->
 	  
 			<div id="companies" class="row-fluid marketing nav-section">
-				<h1 align="center">In Residence</h1>
+				<div id="residence-banner"><h1 align="center">In Residence</h1></div>
 				<br><br>
 				<ul class="thumbnails" >
 					<li class="span4">
@@ -103,10 +126,10 @@
 		
 				<ul class="thumbnails">
 					<li class="span4">
-						<a class="logolink" href="http://www.koalab.com"><img class="logo" src="img/companies/Conjur.png" alt="Conjur" title="Shhh... Stealth Mode"></a>
+						<a class="logolink" href="http://www.ape-system.com/"><img class="logo" src="http://ape-system.com/images/ape_systems_logo.gif" alt="APE System" title="Strength and Conditioning. Evolved."></a>
 					</li>
 					<li class="span4">
-						<a class="logolink" href="http://www.fetchnotes.com/"><img class="logo" src="img/companies/fetchnotes.png" alt="Fetchnotes" title="Your notes in the cloud"></a>
+						<a class="logolink" href="http://www.fetchnotes.com/"><img class="logo" src="img/companies/Fetchnoteslogo.png" alt="Fetchnotes" title="Your notes in the cloud"></a>
 					</li>
 					<li class="span4">
 						<a class="logolink" href="http://www.stottlerhenke.com/"><img class="logo" src="img/companies/stottlerhenke.png" alt="Stottler-Henke" title="Artificial Intelligence Software Solutions"></a>
@@ -118,16 +141,19 @@
 						<a class="logolink" href="http://www.koalab.com"><img class="nologo" src="img/companies/Atelion.png" alt="Atelion" title="Shhh... Stealth Mode"></a>
 					</li>
 					<li class="span4">
-						<a class="logolink" href="http://www.koalab.com/"><img class="nologo" src="img/companies/Biffle.png" alt="Biffle" title="Shhh... Stealth Mode"></a>
+						<a class="logolink" href="http://www.koalab.com/"><img class="nologo" src="img/companies/informite.png" alt="Biffle" title="Shhh... Stealth Mode"></a>
+					</li>
+					<li class="span4">
+						<a class="logolink" href="http://www.koalab.com/"><img class="nologo" src="img/companies/Monomo.png" alt="Monomo" title="Shhh... Stealth Mode"></a>
 					</li>
 				</ul>
 				
 				<br><br>
-				<h1 align="center">In the Wild</h1>
+				<div id="wild-banner"><h1 align="center">In the Wild</h1></div>
 				<br><br>
 				<ul class="thumbnails" >
 					<li class="span4">
-						<a class="logolink" href="http://resurety.com/"></a>
+						<a class="logolink" href="http://www.koalab.com"><img class="logo" src="img/companies/Conjur.png" alt="Conjur" title="Shhh... Stealth Mode"></a>
 					</li>
 					<li class="span4">
 						<a class="logolink" href="http://resurety.com/"><img class="logo" src="img/companies/resurety.jpg" alt="Resurety" title="Making wind power predictable and profitable"></a>
@@ -150,8 +176,10 @@
 				<div class="nav-section" id="membership">
 			
 					<div class="container membership" >
-						<div class="left-element membership" onClick="membershipOptionClicked(0)">
+						<!-- <div class="left-element membership"> -->
 							<h2 align="center" class="listheaderleft membership">Dedicated Desk</h2>
+							<h2 align="center" class="listheaderright membership">Dedicated Office</h2>
+							<div class = "left listcontainer membership">
 							<ul class = "membershiplistleft">
 								<li class = "membershiplistitem">1-2 people per desk</li>
 								<li class = "membershiplistitem">24/7 access</li>
@@ -159,10 +187,8 @@
 								<li class = "membershiplistitem">Access to conference rooms</li>
 								<li class = "membershiplistitem">Cost: $600 per month</li>
 							</ul>
-							<label class="membershiplabel">Apply Here</label>
 						</div>
-						<div class="right-element membership" onClick="membershipOptionClicked(1)">
-							<h2 align="center" class="listheaderright membership">Dedicated Office</h2>
+						<div class="right listcontainer membership">
 							<ul class = "membershiplistright">
 								<li class = "membershiplistitem">Furnished and Private</li>
 								<li class = "membershiplistitem">24/7 access</li>
@@ -170,8 +196,17 @@
 								<li class = "membershiplistitem">Access to conference rooms</li>
 								<li class = "membershiplistitem">Cost: $3,000 per month</li>
 							</ul>
-							<label class="membershiplabel">Apply Here</label>
 						</div>
+
+						<div class="spacer1 membership"></div>
+							<h3 class="left button membership" onClick="membershipOptionClicked(0)">Apply</h3>
+							<div class="spacer2 membership"></div>
+							<!-- </div> -->
+						<!-- <div class="right-element membership"> -->
+							
+							
+							<h3 class="right button membership" onClick="membershipOptionClicked(1)">Apply</h3>
+						<!-- </div> -->
 					</div>
 					<br>
 					<br>
@@ -235,6 +270,8 @@
 				<!-- Placed at the end of the document so the pages load faster -->
 				<script src="http://code.jquery.com/jquery.js"></script>
 				<script src="js/bootstrap.min.js"></script>
+				<script src="js/index.js"></script>
+				<script src="js/easing.js"></script>
     
 				<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 				<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/maplabel/src/maplabel-compiled.js"></script>
@@ -334,9 +371,11 @@
 		
 				$(document).ready(function() {
 					$('#navbar-div ul li a').bind('click', function(e) {
-						e.preventDefault();
-						$('html, body').animate({ scrollTop: $(this.hash).offset().top }, 300);
-
+						if( $(this).attr('id') == "blog" ) {}
+						else {
+							e.preventDefault();
+							$('html, body').animate({ scrollTop: $(this.hash).offset().top }, 300);
+						}
 						// edit: Opera requires the "html" elm. animated
 					});
 				});

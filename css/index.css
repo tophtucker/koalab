@@ -1,7 +1,7 @@
 /* Custom container */
 .container-narrow {
 	margin: 0 auto;
-	max-width: 1000px;
+	width: 1000px;
 }
 .container-narrow > hr {
 	margin: 30px 0;
@@ -47,6 +47,10 @@
 	margin-top: 20px;
 }
 
+#navbar-div {
+	width: 1000px;
+}
+
 .nav-section {
 	top: -100px;
 	padding-top: 100px;
@@ -69,8 +73,17 @@ hr {
 }
 
 .membership-nav-pill {
-	background: red;
+	background: #c73945;
 	color: white;
+}
+
+.other-nav-pill {
+	background: white;
+	color: #0088cc;
+}
+
+.pull-right .active a {
+	background: #0088cc;
 }
 
 .social-media h2{
@@ -96,6 +109,33 @@ hr {
 
 /* PORTFOLIO */
 
+#residence-banner {
+	display: table-cell;
+	width: 100%;
+	height: 80px;
+	vertical-align: middle;
+	background-image: url('../img/residencegradient.png');
+}
+
+#residence-banner h1 {
+	width: 1000px;
+	vertical-align: middle;
+}
+
+#wild-banner {
+
+	display: table-cell;
+	width: 100%;
+	height: 80px;
+	vertical-align: middle;
+	background-image: url('../img/wildgradient.png');
+}
+
+#wild-banner h1 {
+	width: 1000px;
+	vertical-align: middle;
+}
+
 .thumbnails li {
 	height: 100px;
 }
@@ -103,6 +143,8 @@ hr {
 .thumbnails a {
 	display: block;
 	margin: 0 auto;
+	max-width: 280px;
+	max-height: 100px;
 	width: 80%;
 	height: 80%;
 }
@@ -131,13 +173,15 @@ hr {
 	width: 65%;
 	margin: 0 auto;
 	overflow: none;
-	cursor:pointer;
 }
 
 .membership.left-element {
-	moz-border-radius: 15px 0px 0px 0px;
-	border-radius: 15px 0px 0px 0px;
-	border: 3px solid black;
+	/*
+	moz-border-radius: 15px 0px 0px 15px;
+	border-radius: 15px 0px 0px 15px;
+	border-right: 0px solid black;
+	*/
+	background: lightgrey;
 	width: 50%;
 	margin: 0 auto;
 	float:left;
@@ -145,9 +189,12 @@ hr {
 }
 
 .membership.right-element {
-	moz-border-radius: 0px 15px 0px 0px;
-	border-radius: 0px 15px 0px 0px;
-	border: 3px solid black;
+	/*
+	moz-border-radius: 0px 15px 15px 0px;
+	border-radius: 0px 15px 15px 0px;
+	border-left: 0px solid black;
+	*/
+	background: white;
 	width: 50%;
 	margin: 0 auto;
 	float:left;
@@ -155,30 +202,54 @@ hr {
 }
 
 .membership.listheaderleft {
+	/*
 	moz-border-radius: 15px 0px 0px 0px;
 	border-radius: 15px 0px 0px 0px;
-	border-bottom: 2px solid black;
-	background: #00612c;
-	margin-top:0;
+	border-bottom: 0px solid black;
+	*/
+	float: left;
+	width: 50%;
+	background: #0088cc;
+	margin:0;
 	color: white;
 	padding: .3em;
 }
 
 .membership.listheaderright {
+	/*
 	moz-border-radius: 0px 15px 0px 0px;
 	border-radius: 0px 15px 0px 0px;
-	border-bottom: 2px solid black;
-	background: #1e1c59;
-	margin-top:0;
+	border-bottom: 0px solid black;
+	*/
+	float: left;
+	width: 50%;
+	background: #c73945;
+	margin:0;
 	color: white;
 	padding: .3em;
 }
 
 .membershiplistleft {
 	font-size: 18pt;
-	padding: .5em;
+	padding-left: .5em;
 	padding-top: .2em;
 	text-align:left;
+}
+
+.membership.listcontainer.left {
+	width: 50%;
+	float: left;
+	border-left: 2px solid #555;
+	border-right: 1px solid #555;
+	border-bottom: 2px solid #555;
+}
+
+.membership.listcontainer.right {
+	width: 50%;
+	float: left;
+	border-left: 1px solid #555;
+	border-right: 2px solid #555;
+	border-bottom: 2px solid #555;
 }
 
 .membershiplistright {
@@ -192,18 +263,54 @@ hr {
 	padding: .3em 0em .3em 0em;
 }
 
-.membershiplabel {
-	font-size: 22pt;
-	font-weight: bold;
-	text-decoration: underline;
-	padding-top: -1em;
-	margin-top: -.3em;
-	padding-bottom: .7em;
-	color: #1e1c59;
+.membership.button.left {
+	float:left;
+	width: 45%;
+	display: block;
+	text-align: center;
+	color: #fff;
+	background-color: #0088cc;
+	border: solid #B03060 1px;
+	border-bottom: solid #B03060 4px;
+	text-shadow: 0px 2px 0 #B03060;
+	border-radius: .3em;
+	position: relative;
+	-webkit-transition: all 0.1s ease-out;
+	-moz-transition: all 0.1s ease-out;
+	-o-transition: all 0.1s ease-out;
+	transition: all 0.1s ease-out;
+	cursor:pointer;
 }
 
-.membership.contact {
-	
+.membership.button.right {
+	width: 45%;
+	float: left;
+	display: block;
+	text-align: center;
+	color: #fff;
+	background-color: #c73945;
+	border: solid #B03060 1px;
+	border-bottom: solid #0088cc 4px;
+	text-shadow: 0px 2px 0 #B03060;
+	border-radius: .3em;
+	position: relative;
+	-webkit-transition: all 0.1s ease-out;
+	-moz-transition: all 0.1s ease-out;
+	-o-transition: all 0.1s ease-out;
+	transition: all 0.1s ease-out;
+	cursor:pointer;
+}
+
+.membership.spacer1 {
+	width:2.5%;
+	height:20px;
+	float:left;
+}
+
+.membership.spacer2 {
+	width:5%;
+	height:20px;
+	float:left;
 }
 
 /* FIND US */

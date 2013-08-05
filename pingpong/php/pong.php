@@ -44,8 +44,10 @@ function getOptionsFromLeaderboard() {
 	$return_string = "<option value='Select a Player'>Select a Player</option>";
 	while (!feof($file_handle)) {
 		$player = fgets($file_handle);
-		if($player == "")
+		$player = trim($player, "%\n\t");
+		if(strlen($player) == 0) {
 			continue;
+		}
 		$return_string .= "<option value=".$player.">".$player."</option>";
 	}
 	fclose($file_handle);
@@ -154,9 +156,13 @@ function logGame($player1, $player2, $winner) {
 	// affect leaderboard
 	$difference = $loser_pos - $winner_pos;
 	if($difference == 2 || $difference == 1) {
+		printLeaderboard(__LINE__);
 		changePosition($winner, -$difference);
-		if( $difference == 2)
+		printLeaderboard(__LINE__);
+		if( $difference == 2) {
 		changePosition($loser, $difference-1);
+		}
+		printLeaderboard(__LINE__);
 	}
 	// if no difference, they both came from pool of the damned
 	elseif($difference == 0) {
@@ -165,14 +171,55 @@ function logGame($player1, $player2, $winner) {
 	}
 }
 
+function printLeaderboard($line) {
+	ChromePhp::log($line.": Printing Leaderboard");
+	$positions = getPositions();
+	foreach($positions as $key=>$value) {
+		ChromePhp::log("\t".$key.". ".$value);
+	}
+	ChromePhp::log("\t-----DAMNED-----");
+	$damned = getPoolOfTheDamned();
+	foreach($damned as $entry) {
+		ChromePhp::log("\t".$entry);
+	}
+}
+
 function addPlayer($player, $email, $email_confirmed) {
-	if ($email_confirmed) {
+	ChromePhp::log("start, confirmed = ".$email_confirmed);
+	if ($email_confirmed == "true") {
+		ChromePhp::log("here confirmed = ".$email_confirmed);
 		$leaderboard_file = fopen("./leaderboard.dat", 'a');
 		$players_file = fopen("./players.dat", 'a');
 		fwrite($leaderboard_file, "\n".$player);
 		fwrite($players_file, "\n%".$player."$0$0".'$'."never$".$email."%");
 		fclose($leaderboard_file);
 		fclose($players_file);
+		
+		// get current url
+		$pageURL = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
+		if ($_SERVER["SERVER_PORT"] != "80") {
+		    $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+		} 
+		else {
+		    $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+		}
+	
+		//get just the directory in the url
+		$file_name = substr(__FILE__, strlen(__DIR__), strlen(__FILE__));
+		$page_dir = explode($file_name, $pageURL);
+		$page_dir = explode("php", $page_dir[0]);
+		$page_dir = $page_dir[0];
+		
+		$target_file_name = "pong.html";
+	
+		$targetURL = $page_dir.$target_file_name;
+		
+		ChromePhp::log($targetURL);
+		
+		header('Location: '.$targetURL);
+		
+		ChromePhp::log($targetURL);
+		
 		return;
 	}
 	$email_to = $email;
@@ -194,12 +241,12 @@ function addPlayer($player, $email, $email_confirmed) {
 	//get just the directory in the url
 	$file_name = substr(__FILE__, strlen(__DIR__), strlen(__FILE__));
 	$page_dir = explode($file_name, $pageURL);
-	$function_string = str_replace("false", "true", $page_dir[1]);
+	$function_string = str_replace("email_confirmed=false", "email_confirmed=true", $page_dir[1]);
 	$page_dir = $page_dir[0];
 	
 	$targetURL = $page_dir.$file_name.$function_string;
 	
-	$email_message .= $pageURL;
+	$email_message .= $targetURL;
 	
 	$headers = 'From: '.$email_from."\r\n".
 		'Reply-To: '.$email."\r\n" .
@@ -220,25 +267,19 @@ function checkBumps() {
 			$players_array[$pieces[0]] = $pieces[3];
 		}
 	}
-	ChromePhp::log(__LINE__.": ".count($players_array));
 	$todays_date = date("m/d/Y");
 	$today_timestamp = strtotime($todays_date);
 	$last_week_timestamp = $today_timestamp-7*86400+7200;
-	ChromePhp::log(__LINE__.": ".file_get_contents("./leaderboard.dat"));
 	foreach ($players_array as $player => $last_played) {
 		$last_played_timestamp = strtotime($last_played);
-		ChromePhp::log(__LINE__.": ".$player."  ".$last_played."  ".$last_played_timestamp);
 		if ($last_week_timestamp > $last_played_timestamp && !playerIsInPoolOfTheDamned($player)) {
 			changePosition($player, 9999);
-			ChromePhp::log(__LINE__.": ".$player." moved to bottom");
 		}
-		ChromePhp::log(__LINE__.": ".file_get_contents("./leaderboard.dat"));
 	}
 	fclose($file_handle_players);
 }
 
 function changePosition($player, $motion) {
-	ChromePhp::log(__LINE__.": ".$player." ".$motion);
 	$position_array = getPositions();
 	$position = getPlayerPosition($player);
 	$count = count($position_array);
@@ -246,14 +287,11 @@ function changePosition($player, $motion) {
 		$position = $count;
 		removeFromPoolOfTheDamned($player);
 	}
-	ChromePhp::log(__LINE__.": ".$position_array." ".$count." ".$position);
 	if($position+$motion < 0 && $motion < 0) {
-		ChromePhp::log(__LINE__);
 		$motion = -$position;
 	}
 	$toTheDamned = false;
 	if ($position+$motion > $count-1 && $motion > 0) {
-		ChromePhp::log(__LINE__);
 		$toTheDamned = true;
 		addToPoolOfTheDamned($player);
 	}
@@ -272,7 +310,6 @@ function changePosition($player, $motion) {
 		$position_array[$position] = $temp;
 		$position++;
 		$motion--;
-		ChromePhp::log(__LINE__);
 	}
 	
 	while ($motion < 0) {
@@ -282,13 +319,10 @@ function changePosition($player, $motion) {
 		$position_array[$position] = $temp;
 		$position--;
 		$motion++;
-		ChromePhp::log(__LINE__);
 	}
 	$count = count($position_array);
-	ChromePhp::log(__LINE__.": ".$new_file_contents." ".$count);
 	for( $i = 0 ; $i < $count ; $i++ ) {
 		$new_file_contents .= $position_array[$i]."\n";
-		ChromePhp::log(__LINE__.": ".$new_file_contents);
 	}
 	//now for the pool of the damned
 	$pool = getPoolOfTheDamned();
@@ -352,10 +386,8 @@ function addToPoolOfTheDamned($player) {
 	$file_handler = fopen("./leaderboard.dat", "a");
 	fwrite($file_handler, "\n".$player);
 	fclose($file_handler);
-	ChromePhp::log(__LINE__.": ");
 	$pool = getPoolOfTheDamned();
 	foreach($pool as $entry) {
-		ChromePhp::log("\t".$entry);
 	}
 }
 
