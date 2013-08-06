@@ -172,35 +172,38 @@
 				<hr>
 		
 				<!-- MEMBERSHIP -->
+
 		
 				<div class="nav-section" id="membership">
 			
+				<br>
+				
 					<div class="container membership" >
 						<!-- <div class="left-element membership"> -->
 							<h2 align="center" class="left header membership">Dedicated Desk</h2>
 							<h2 align="center" class="right header membership">Dedicated Office</h2>
 							<div class = "left list-container membership">
 							<ul class = "left list membership">
-								<li class = "membershiplistitem">1-2 people per desk</li>
-								<li class = "membershiplistitem">24/7 access</li>
-								<li class = "membershiplistitem">Unbeatable location</li>
-								<li class = "membershiplistitem">Access to conference rooms</li>
-								<li class = "membershiplistitem">Cost: $600 per month</li>
+								<li>1-2 people per desk</li>
+								<li>24/7 access</li>
+								<li>Unbeatable location</li>
+								<li>Access to conference rooms</li>
+								<li>Cost: $600 per month</li>
 							</ul>
 						</div>
 						<div class="right list-container membership">
 							<ul class = "right list membership">
-								<li class = "membershiplistitem">Furnished and Private</li>
-								<li class = "membershiplistitem">24/7 access</li>
-								<li class = "membershiplistitem">Unbeatable location</li>
-								<li class = "membershiplistitem">Access to conference rooms</li>
-								<li class = "membershiplistitem">Cost: $3,000 per month</li>
+								<li>Furnished and Private</li>
+								<li>24/7 access</li>
+								<li>Unbeatable location</li>
+								<li>Access to conference rooms</li>
+								<li>Cost: $3,000 per month</li>
 							</ul>
 						</div>
 
-						<div class="spacer1 membership"></div>
+						<div class="left spacer membership"></div>
 							<h3 class="left button membership" onClick="membershipOptionClicked(0)">Apply</h3>
-							<div class="spacer2 membership"></div>
+							<div class="middle spacer membership"></div>
 							
 							<h3 class="right button membership" onClick="membershipOptionClicked(1)">Apply</h3>
 					</div>
