@@ -114,7 +114,8 @@ hr {
 	width: 100%;
 	height: 80px;
 	vertical-align: middle;
-	background-image: url('../img/residencegradient.png');
+	border-top: 2px solid grey;
+	border-bottom: 2px solid grey;
 }
 
 #residence-banner h1 {
@@ -128,7 +129,8 @@ hr {
 	width: 100%;
 	height: 80px;
 	vertical-align: middle;
-	background-image: url('../img/wildgradient.png');
+	border-top: 2px solid grey;
+	border-bottom: 2px solid grey;
 }
 
 #wild-banner h1 {
