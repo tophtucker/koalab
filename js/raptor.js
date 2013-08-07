@@ -107,8 +107,6 @@
 					"bottom": "20px"
 				}, 200, function () {
 
-					console.log($(this));
-
 					$(this).animate({
 						"bottom": "0"
 					}, 200, function () {
@@ -159,9 +157,6 @@
 		}); //each call
 	} //orbit plugin call
 })(jQuery);
-
-
-console.log("10");     
 
 
 

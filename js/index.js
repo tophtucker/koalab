@@ -9,18 +9,11 @@ $(function () {
 	var code2 = String.fromCharCode(38, 38, 40, 40, 37, 39, 37, 39, 65, 66);
 	var codeBuffer = "";
 	$(document).keyup(function (e) {
-
-
-		console.log("keyup: " + e.which);
 		
 		codeBuffer += String.fromCharCode(e.which);
 		if (code1.substring(0, codeBuffer.length) == codeBuffer) {
 			
-			console.log("2");
-			
 			if (code1.length == codeBuffer.length) {
-				
-				console.log("3");
 				toggle1();
 				codeBuffer = String.fromCharCode(75, 69, 76, 83, 69, 89, 82, 79, 67, 75);
 			}
