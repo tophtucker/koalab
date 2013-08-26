@@ -126,13 +126,13 @@
 		
 				<ul class="thumbnails">
 					<li class="span4">
-						<a class="logolink" href="http://ape-system.com/"><img class="logo" src="http://ape-system.com/images/ape_systems_logo.gif" alt="APE System" title="Strength and Conditioning. Evolved."></a>
-					</li>
-					<li class="span4">
 						<a class="logolink" href="http://www.fetchnotes.com/"><img class="logo" src="img/companies/Fetchnoteslogo.png" alt="Fetchnotes" title="Your mind's best friend"></a>
 					</li>
 					<li class="span4">
 						<a class="logolink" href="http://www.stottlerhenke.com/"><img class="logo" src="img/companies/stottlerhenke.png" alt="Stottler-Henke" title="Artificial Intelligence Software Solutions"></a>
+					</li>					
+					<li class="span4">
+						<a class="logolink" href="http://www.koalab.com/"><img class="nologo" src="img/companies/Monomo.png" alt="Monomo" title="Shhh... Stealth Mode"></a>
 					</li>
 				</ul>
 				
@@ -143,15 +143,15 @@
 					<li class="span4">
 						<a class="logolink" href="http://www.koalab.com/"><img class="nologo" src="img/companies/informite.png" alt="Biffle" title="Shhh... Stealth Mode"></a>
 					</li>
-					<li class="span4">
-						<a class="logolink" href="http://www.koalab.com/"><img class="nologo" src="img/companies/Monomo.png" alt="Monomo" title="Shhh... Stealth Mode"></a>
-					</li>
 				</ul>
 				
 				<br><br>
 				<div id="wild-banner"><h1 align="center">In the Wild</h1></div>
 				<br><br>
 				<ul class="thumbnails" >
+					<li class="span4">
+						<a class="logolink" href="http://ape-system.com/"><img class="logo" src="http://ape-system.com/images/ape_systems_logo.gif" alt="APE System" title="Strength and Conditioning. Evolved."></a>
+					</li>
 					<li class="span4">
 						<a class="logolink" href="http://www.koalab.com"><img class="logo" src="img/companies/Conjur.png" alt="Conjur" title="Shhh... Stealth Mode"></a>
 					</li>
